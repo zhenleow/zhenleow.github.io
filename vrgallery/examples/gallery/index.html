@@ -66,7 +66,7 @@
 	   background-color: rgba(0,0,0,0.5);
 	   z-index: 2;
 	   cursor: pointer;
-	   margin-bottom: 50px
+	   <!--margin-bottom: 50px-->
 	 }
       ul.carousel {
         display: flex;
@@ -83,9 +83,9 @@
 	  
 	  /*DESKTOP*/
 	  @media screen and (min-width: 1000px) {
-	  	 #overlay {
+	  	<!-- #overlay {
 		   margin-bottom: 0px;
-		 }
+		 }-->
 		 
 	  .showtopright {
 		  margin-left:-170px;
@@ -94,12 +94,11 @@
 
       /* MOBILE */
       @media screen and (max-width: 700px) {
-	  	#overlay {
-		   margin-bottom: 0px;
-		 }
+	  .showtopright {
+		  margin-left:-100px;
+		}
         ul.carousel {
-          width: 100%;
-		  <!--margin: 50px auto;-->
+          width: 360px;
           justify-content: flex-start;
         }
 
