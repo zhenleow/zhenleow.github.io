@@ -4,6 +4,7 @@
     <title>VR Gallery</title>
     <meta name=viewport content="width=device-width,height=device-height, initial-scale=1">
 	<!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+	<meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta charset="utf-8" />
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -70,15 +71,12 @@
 	 }
       ul.carousel {
         display: flex;
-        <!--width: 720px;-->
 		width: 1500px;
 		margin-top:50px;
 		margin-bottom:5px;
-        <!--margin: 20px auto;-->
         padding: 0;
         justify-content: center;
         overflow: auto;
-		<!--background-color:green-->
       }
 	  
 	  /*DESKTOP*/
@@ -98,7 +96,9 @@
 		  margin-left:-100px;
 		}
         ul.carousel {
-          width: 100vw;
+          width: 100vw
+		  margin-top:50px;
+		  margin-bottom:10px;
           justify-content: flex-start;
         }
 
