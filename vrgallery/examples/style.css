@@ -107,3 +107,22 @@ iframe {
     width: 700px;
   }
 }
+
+@media screen and (min-width: 1000px) {
+  iframe {
+    /*height: 400px;
+    width: 700px;*/
+	height: 858px;
+	width: 100%;
+  }
+
+  h1, h2, p {
+    width: 700px;
+    margin: 1rem auto;
+  }
+
+  #controls {
+    width: 700px;
+  }
+}
+
