@@ -97,6 +97,13 @@ iframe {
   }
 }*/
 
+@media only screen and (min-height: 500px) {
+  iframe {
+    width: 100%;
+	height: 540px;
+  }
+}
+
 @media only screen and (min-height: 600px) {
   iframe {
     width: 100%;
