@@ -28,8 +28,9 @@ iframe {
   margin-bottom: 0;
   padding: 0;
   border: 0;
-  height: 100vh; /* For 100% screen height */
-  width:  100vw; /* For 100% screen width */
+  height: 100vh; /* For 100% screen height. Fallback for browsers that do not support Custom Properties  */
+  height: calc(var(--vh, 1vh) * 100);
+  width:  100vw; /* For 100% screen width. Fallback for browsers that do not support Custom Properties */
 }
 
 #controls {
