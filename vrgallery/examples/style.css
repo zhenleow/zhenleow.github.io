@@ -2,10 +2,6 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: "Roboto", Arial, sans-serif;
-  height: 100vh; /* For 100% screen height. Fallback for browsers that do not support Custom Properties  */
-  height: calc(var(--vh, 1vh) * 100);
-  width:  100vw; /* For 100% screen width. Fallback for browsers that do not support Custom Properties */
-  width: calc(var(--wh, 1wh) * 100);
 }
 
 h1 { font-size: 2rem; }
@@ -28,7 +24,6 @@ p.caption {
 iframe {
   display: block;
   border: none;
-  /*margin: 10px auto;*/
   margin-bottom: 0;
   padding: 0;
   border: 0;
