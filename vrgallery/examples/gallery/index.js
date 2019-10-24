@@ -15,6 +15,7 @@
 var vrView;
 var vh;
 var wh;
+var viewport;
 
 // All the scenes for the experience
 var scenes = {
@@ -48,7 +49,7 @@ wh = window.innerWidth * 0.01;
 document.documentElement.style.setProperty('--vh', `${vh}px`);
 document.documentElement.style.setProperty('--wh', `${wh}px`);
 viewport = document.querySelector("meta[name=viewport]");
-viewport.setAttribute('content', 'width='+wh+', height='+vh+', initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
+viewport.setAttribute('content', 'width='+wh+', height='+vh+', initial-scale=1.0');
 
   vrView = new VRView.Player('#vrview', {
     width: '100%',
