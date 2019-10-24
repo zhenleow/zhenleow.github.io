@@ -49,6 +49,7 @@ window.addEventListener('resize', () => {
   document.documentElement.style.setProperty('--wh', `${wh}px`);
   viewport = document.querySelector("meta[name=viewport]");
   viewport.setAttribute('content', 'width='+wh+', height='+vh+', initial-scale=1.0');
+  alert("resize");
 });
 
 function onLoad() {
