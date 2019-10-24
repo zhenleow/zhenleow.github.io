@@ -33,8 +33,8 @@ var scenes = {
     preview: 'chichen-itza-preview.jpg'
   },
   tajMahal: {
-	image: 'hotel-lobby.jpg',
-    preview: 'hotel-lobby.jpg'
+    image: 'taj-mahal.jpg',
+    preview: 'taj-mahal-preview.jpg'
   },
 };
 
