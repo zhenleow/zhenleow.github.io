@@ -41,7 +41,7 @@ var scenes = {
   },
 };
 
-window.addEventListener('resize', () => {
+/*window.addEventListener('resize', () => {
   // We execute the same script as before
   vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -49,8 +49,7 @@ window.addEventListener('resize', () => {
   document.documentElement.style.setProperty('--wh', `${wh}px`);
   viewport = document.querySelector("meta[name=viewport]");
   viewport.setAttribute('content', 'width='+wh+', height='+vh+', initial-scale=1.0');
-  alert("resize");
-});
+});*/
 
 function onLoad() {
 // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
