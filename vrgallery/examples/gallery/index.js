@@ -47,6 +47,8 @@ wh = window.innerWidth * 0.01;
 // Then we set the value in the --vh custom property to the root of the document
 document.documentElement.style.setProperty('--vh', `${vh}px`);
 document.documentElement.style.setProperty('--wh', `${wh}px`);
+viewport = document.querySelector("meta[name=viewport]");
+viewport.setAttribute('content', 'width='+wh+', height='+vh+', initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
 
   vrView = new VRView.Player('#vrview', {
     width: '100%',
