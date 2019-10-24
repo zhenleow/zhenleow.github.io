@@ -14,6 +14,7 @@
  */
 var vrView;
 var vh;
+var wh;
 
 // All the scenes for the experience
 var scenes = {
@@ -42,8 +43,10 @@ var scenes = {
 function onLoad() {
 // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
 vh = window.innerHeight * 0.01;
+wh = window.innerWidth * 0.01;
 // Then we set the value in the --vh custom property to the root of the document
 document.documentElement.style.setProperty('--vh', `${vh}px`);
+document.documentElement.style.setProperty('--vh', `${wh}px`);
 
   vrView = new VRView.Player('#vrview', {
     width: '100%',
