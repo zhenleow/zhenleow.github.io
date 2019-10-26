@@ -58,6 +58,7 @@ var scenes = {
 }*/
 
 $(window).bind('orientationchange', function(e) {
+	window.location.reload();
     if(e.orientation === 'landscape'){
         //edit you CSS
         // or reload image
