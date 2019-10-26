@@ -57,6 +57,17 @@ window.onorientationchange=function()
 	window.location.reload();
 }
 
+$(window).bind('orientationchange', function(e) {
+    if(e.orientation === 'landscape'){
+        //edit you CSS
+        // or reload image
+		alert("landscape");
+    }else{
+        // roll back
+		alert("portrait");
+    }
+});
+
 function onLoad() {
 // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
 vh = window.innerHeight * 0.01;
