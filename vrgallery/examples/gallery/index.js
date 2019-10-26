@@ -56,8 +56,12 @@ var scenes = {
 {
 	window.location.reload();
 }*/
+window.addEventListener("orientationchange", function() {
+	// Announce the new orientation number
+	alert(screen.orientation);
+}, false);
 
-$(window).bind('orientationchange', function(e) {
+/*$(window).bind('orientationchange', function(e) {
 	window.location.reload();
     if(e.orientation === 'landscape'){
         //edit you CSS
@@ -67,7 +71,7 @@ $(window).bind('orientationchange', function(e) {
         // roll back
 		alert("portrait");
     }
-});
+});*/
 
 function onLoad() {
 // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
