@@ -43,12 +43,13 @@ var scenes = {
 
 window.addEventListener('resize', () => {
   // We execute the same script as before
-  vh = window.innerHeight * 0.01;
+  onLoad();
+  /*vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
   wh = window.innerWidth * 0.01;
   document.documentElement.style.setProperty('--wh', `${wh}px`);
   viewport = document.querySelector("meta[name=viewport]");
-  viewport.setAttribute('content', 'width='+wh+', height='+vh+', initial-scale=1.0');
+  viewport.setAttribute('content', 'width='+wh+', height='+vh+', initial-scale=1.0');*/
 });
 
 function onLoad() {
