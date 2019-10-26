@@ -56,9 +56,10 @@ var scenes = {
 {
 	window.location.reload();
 }*/
-window.addEventListener("orientationchange", function(screen) {
+window.addEventListener("orientationchange", function() {
 	// Announce the new orientation number
-	alert(screen.orientation);
+	//alert(screen.orientation);
+	window.location.reload();
 }, false);
 
 /*$(window).bind('orientationchange', function(e) {
