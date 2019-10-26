@@ -52,10 +52,10 @@ var scenes = {
   viewport.setAttribute('content', 'width='+wh+', height='+vh+', initial-scale=1.0');*/
 //});
 
-window.onorientationchange=function()
+/*window.onorientationchange=function()
 {
 	window.location.reload();
-}
+}*/
 
 $(window).bind('orientationchange', function(e) {
     if(e.orientation === 'landscape'){
