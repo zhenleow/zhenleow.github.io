@@ -52,6 +52,11 @@ window.addEventListener('resize', () => {
   viewport.setAttribute('content', 'width='+wh+', height='+vh+', initial-scale=1.0');*/
 });
 
+window.onorientationchange=function()
+{
+	window.location.reload();
+}
+
 function onLoad() {
 // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
 vh = window.innerHeight * 0.01;
