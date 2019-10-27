@@ -15,7 +15,6 @@
       overflow: hidden;
       white-space: nowrap;
 	  display: inline;
-	  float: none;
 	}
       ul.carousel {
         display: flex;
@@ -140,8 +139,10 @@
       </li>
     </ul>
 	<div class="center">
-	Level: 
-	<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+	<table>
+	<tr><td>Choose Level: </td>
+	<td>
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
 	  <div class="btn-group mr-2" role="group" aria-label="First group">
 		<button type="button" class="btn btn-secondary">1</button>
 		<button type="button" class="btn btn-secondary">2</button>
@@ -152,6 +153,8 @@
 		<button type="button" class="btn btn-secondary">7</button>
 	  </div>
 	</div>
+	</td></tr>
+	</table>
 	<div>
     <script src="https://storage.googleapis.com/vrview/2.0/build/vrview.min.js"></script>
     <script src="index.js"></script>
