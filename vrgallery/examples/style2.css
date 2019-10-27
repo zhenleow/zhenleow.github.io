@@ -1,100 +1,181 @@
 html, body {
-  background-color: #000;
-  color: #eee;
-  margin: 0px;
-  padding: 0px;
-  position: fixed;
-  overflow: hidden;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-  /* Prevent user selection. */
-  user-select: none;
-  touch-callout: none;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-}
-.dialog {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  font-family: sans-serif;
-  font-size: 170%;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.2);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-}
-.dialog.visible {
-  display: flex;
-}
-.dialog .wrap {
-  padding: 30px 60px;
-  margin: 20px auto;
-  width: 60%;
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 5px;
-}
-.dialog h1 {
   margin: 0;
+  padding: 0;
+  font-family: "Roboto", Arial, sans-serif;
 }
 
-a, a:visited {
-  color: skyblue;
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+p {
+  font-size: 0.9rem;
+  line-height: 1.4rem;
 }
 
-#watermark img {
-  position: fixed;
+h1, h2, h3, p {
+  margin: 1rem;
+}
+
+p.caption {
+  font-size: 0.7rem;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+iframe {
+  display: block;
+  border: none;
+  margin-bottom: 0;
+  margin-top: 50px;
+  padding: 0;
+  border: 0;
+  height: 60vh; /* For 100% screen height. Fallback for browsers that do not support Custom Properties  */
+  <!--height: calc(var(--vh, 1vh) * 100);-->
+  width:  100vw; /* For 100% screen width. Fallback for browsers that do not support Custom Properties */
+  width: calc(var(--wh, 1wh) * 100);
+}
+
+#controls {
   overflow: hidden;
-  left: 0;
-  bottom: 0;
-  opacity: 0.3;
+  background: #eee;
+  margin: 0 auto;
+}
+
+  #controls > * {
+    margin: 8px;
+    cursor: pointer;
+    opacity: 0.5;
+  }
+
+  #controls > *:hover {
+    opacity: 1;
+  }
+
+
+#toggleplay {
+  float: left;
+  background: url('img/ic_pause_black_24dp.svg');
   width: 24px;
   height: 24px;
-  padding: 12px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-}
-#watermark img:hover {
-  opacity: 1;
-  -webkit-filter: drop-shadow(white 0 0 5px);
 }
 
-
-canvas {
-  cursor: -webkit-grab;
-}
-canvas:active {
-  cursor: -webkit-grabbing;
+#toggleplay.paused {
+  background: url('img/ic_play_arrow_black_24dp.svg');
 }
 
-#play-overlay {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: none;
-	align-items: center;
-  justify-content: center;
-}
-#play-overlay.visible {
-	display: flex;
-}
-#play-overlay img {
-  width: 30%;
-  height: 30%;
+#time {
+  float: left;
+  height: 19px;
+  padding-top: 5px;
 }
 
-#error .message {
-  font-family: monospace;
+#togglemute {
+  float: right;
+  background: url('img/ic_volume_up_black_24dp.svg');
+  width: 24px;
+  height: 24px;
 }
+
+#togglemute.muted {
+  background: url('img/ic_volume_off_black_24dp.svg');
+}
+
+#volumerange {
+  float: right;
+  width: 100px;
+  height: 24px;
+}
+
+/* MOBILE */
+/*@media only screen and (max-width: 600px) 
+{
+  iframe {
+    width: 100%;
+	height: 640px;
+  }
+}*/
+
+/*@media only screen and (max-width: 700px) {
+  iframe {
+    width: 100%;
+	height: 780px;
+  }
+}*/
+
+/*@media only screen and (min-height: 500px) {
+  iframe {
+    width: 100%;
+	height: 568px;
+  }
+}
+
+@media only screen and (min-height: 600px) {
+  iframe {
+    width: 100%;
+	height: 640px;
+  }
+}
+
+@media only screen and (min-height: 700px) {
+  iframe {
+    width: 100%;
+	height: 730px;
+  }
+}
+
+@media only screen and (min-height: 800px) {
+  iframe {
+    width: 100%;
+	height: 822px;
+  }
+}*/
+
+/*@media only screen and (min-width: 400px) {
+  iframe {
+    width: 100%;
+	height: 740px;
+  }
+}*/
+
+/*TABLET*/
+/*@media only screen and (min-width: 768px)
+{
+  iframe {
+    width: 100%;
+	height: 800px;
+  }
+}*/
+
+/* DESKTOP */
+@media screen and (min-width: 700px) {
+ /* iframe {
+	height: 858px;
+	width: 100%;
+  }*/
+
+  h1, h2, p {
+    width: 700px;
+    margin: 1rem auto;
+  }
+
+  #controls {
+    width: 700px;
+  }
+}
+
+/*@media screen and (min-width: 1200px) {
+  iframe {*/
+	/*height: 937px;
+	width: 100%;*/
+	/*height: 100vh; 
+    width:  100vw; */
+
+  /*h1, h2, p {
+    width: 700px;
+    margin: 1rem auto;
+  }
+
+  #controls {
+    width: 700px;
+  }
+}*/
+
