@@ -92,7 +92,7 @@ viewport.setAttribute('content', 'width='+wh+', height='+vh+', initial-scale=1.0
     image: 'blank.png',
     is_stereo: true,
     is_autopan_off: true,
-	default_yaw: 90,
+	default_yaw: 180,
 	is_yaw_only: false
   });
 
