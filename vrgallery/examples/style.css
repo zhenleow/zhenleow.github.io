@@ -25,9 +25,10 @@ iframe {
   display: block;
   border: none;
   margin-bottom: 0;
+  top: 50px;
   padding: 0;
   border: 0;
-  height: 70vh; /* For 100% screen height. Fallback for browsers that do not support Custom Properties  */
+  height: 60vh; /* For 100% screen height. Fallback for browsers that do not support Custom Properties  */
   <!--height: calc(var(--vh, 1vh) * 100);-->
   width:  100vw; /* For 100% screen width. Fallback for browsers that do not support Custom Properties */
   width: calc(var(--wh, 1wh) * 100);
