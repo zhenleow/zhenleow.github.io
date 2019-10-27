@@ -59,7 +59,7 @@ var scenes = {
 window.addEventListener("orientationchange", function() {
 	// Announce the new orientation number
 	//alert(screen.orientation);
-	alert("rotation change");
+	//alert("rotation change");
 	vrView=null;
 	window.location.reload();
 }, false);
