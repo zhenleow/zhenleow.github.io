@@ -56,6 +56,7 @@ function onLoad() {
   vrView.on('modechange', onModeChange);
   vrView.on('getposition', onGetPosition);
   vrView.on('error', onVRViewError);
+  alert("generateLvlBtn1");
   generateLvlBtn();
 }
 
