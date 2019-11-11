@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 var vrView;
+var cars = ["1", "2", "3", "4", "5", "6", "7"];
 
 // All the scenes for the experience
 var scenes = {
@@ -55,7 +56,6 @@ function onLoad() {
   vrView.on('modechange', onModeChange);
   vrView.on('getposition', onGetPosition);
   vrView.on('error', onVRViewError);
-  loadScene("redApple");
 }
 
 function loadScene(id) {
@@ -94,7 +94,7 @@ function onVRViewReady(e) {
     });
   }
 
-  loadScene('petra');
+  loadScene('redApple');
 }
 
 function onModeChange(e) {
