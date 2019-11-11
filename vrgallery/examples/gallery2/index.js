@@ -122,5 +122,10 @@ function generateLvlBtn(){
 
         $("#level_buttons").append(buttons);
       }
-    }
+}
+
+$('#level_buttons').on('click', 'input', function(e){
+    console.log("click: ", e.target.value);
+});
+	
 
