@@ -113,6 +113,7 @@ function onGetPosition(e) {
 window.addEventListener('load', onLoad);
 
 function generateLvlBtn(){
+  alert("generateLvlBtn");
   for (var i=0; i < levels.length; i++){
      buttons = $('<div class="btn-group mr-2" role="group" aria-label="First group"></div>');
 
