@@ -1,7 +1,13 @@
+@font-face {
+  font-family: defaultFont;
+  src: url(gallery/fonts/titillium-web-v4-latin-regular.woff);
+}
+
 html, body {
   margin: 0;
   padding: 0;
-  font-family: "Roboto", Arial, sans-serif;
+  /*font-family: "Roboto", Arial, sans-serif;*/
+  font-family: defaultFont;
 }
 
 h1 { font-size: 2rem; }
