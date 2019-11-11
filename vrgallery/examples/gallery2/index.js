@@ -17,28 +17,28 @@ var vrView;
 // All the scenes for the experience
 var scenes = {
   medicalCentre: {
-    image: 'medical-center.JPG',
-    preview: 'medical-center.JPG'
+    image: 'vr_imgs/medical-center.JPG',
+    preview: 'vr_imgs/medical-center.JPG'
   },
   redApple: {
-    image: 'red-apple.JPG',
-    preview: 'red-apple.JPG'
+    image: 'vr_imgs/red-apple.JPG',
+    preview: 'vr_imgs/red-apple.JPG'
   },
   emergencyClinic: {
-    image: 'emergencyclinic.JPG',
-    preview: 'emergencyclinic.JPG'
+    image: 'vr_imgs/emergencyclinic.JPG',
+    preview: 'vr_imgs/emergencyclinic.JPG'
   },
   boxkite: {
-    image: 'boxkite.JPG',
-    preview: 'boxkite.JPG'
+    image: 'vr_imgs/boxkite.JPG',
+    preview: 'vr_imgs/boxkite.JPG'
   },
   hotelLobby: {
-	image: 'hotel-lobby.jpg',
-    preview: 'hotel-lobby.jpg'
+	image: 'vr_imgs/hotel-lobby.jpg',
+    preview: 'vr_imgs/hotel-lobby.jpg'
   },
   carpark: {
-	image: 'carpark.JPG',
-    preview: 'carpark.JPG'
+	image: 'vr_imgs/carpark.JPG',
+    preview: 'vr_imgs/carpark.JPG'
   },
 };
 
