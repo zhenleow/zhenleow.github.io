@@ -115,11 +115,9 @@ window.addEventListener('load', onLoad);
 function generateLvlBtn(){
   for (var i=0; i < levels.length; i++){
      buttons = $('<div class="btn-group mr-2" role="group" aria-label="First group"></div>');
-
-       buttons.html("<button type='button' class='btn btn-secondary'>" + levels[i] + "</button>");
-
-        $("#level_buttons").append(buttons);
-      }
+     buttons.html("<button type='button' class='btn btn-secondary'>" + levels[i] + "</button>");
+     $("#level_buttons").append(buttons);
+   }
 }
 
 $('#level_buttons').on('click', 'input', function(e){
