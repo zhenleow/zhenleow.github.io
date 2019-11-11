@@ -57,7 +57,7 @@ function onLoad() {
   vrView.on('modechange', onModeChange);
   vrView.on('getposition', onGetPosition);
   vrView.on('error', onVRViewError);
-  generateLvlBtn();
+  //generateLvlBtn();
 }
 
 function loadScene(id) {
@@ -113,7 +113,7 @@ function onGetPosition(e) {
 
 window.addEventListener('load', onLoad);
 
-function generateLvlBtn(){
+/*function generateLvlBtn(){
   alert("generateLvlBtn");
   for (var i=0; i < levels.length; i++){
      buttons = $('<div class="btn-group mr-2" role="group" aria-label="First group"></div>');
@@ -126,6 +126,6 @@ function generateLvlBtn(){
 
 $('#level_buttons').on('click', 'input', function(e){
     console.log("click: ", e.target.value);
-});
+});*/
 	
 
