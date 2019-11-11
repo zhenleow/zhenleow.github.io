@@ -55,6 +55,7 @@ function onLoad() {
   vrView.on('modechange', onModeChange);
   vrView.on('getposition', onGetPosition);
   vrView.on('error', onVRViewError);
+  loadScene("redApple");
 }
 
 function loadScene(id) {
