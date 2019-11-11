@@ -44,6 +44,7 @@ var scenes = {
 };
 
 function onLoad() {
+  alert("onLoad");
   vrView = new VRView.Player('#vrview', {
     width: '100%',
     height: 480,
@@ -56,7 +57,6 @@ function onLoad() {
   vrView.on('modechange', onModeChange);
   vrView.on('getposition', onGetPosition);
   vrView.on('error', onVRViewError);
-  alert("generateLvlBtn1");
   generateLvlBtn();
 }
 
