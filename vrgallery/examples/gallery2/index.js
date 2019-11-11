@@ -17,28 +17,28 @@ var vrView;
 // All the scenes for the experience
 var scenes = {
   medicalCentre: {
-    image: 'vr_imgs/medical-center.JPG',
-    preview: 'vr_imgs/medical-center.JPG'
+    image: 'medical-center.JPG',
+    preview: 'medical-center.JPG'
   },
   redApple: {
-    image: 'vr_imgs/red-apple.JPG',
-    preview: 'vr_imgs/red-apple.JPG'
+    image: 'red-apple.JPG',
+    preview: 'red-apple.JPG'
   },
   emergencyClinic: {
-    image: 'vr_imgs/emergencyclinic.JPG',
-    preview: 'vr_imgs/emergencyclinic.JPG'
+    image: 'emergencyclinic.JPG',
+    preview: 'emergencyclinic.JPG'
   },
   boxkite: {
-    image: 'vr_imgs/boxkite.JPG',
-    preview: 'vr_imgs/boxkite.JPG'
+    image: 'boxkite.JPG',
+    preview: 'boxkite.JPG'
   },
   hotelLobby: {
-	image: 'vr_imgs/hotel-lobby.jpg',
-    preview: 'vr_imgs/hotel-lobby.jpg'
+	image: 'hotel-lobby.jpg',
+    preview: 'hotel-lobby.jpg'
   },
   carpark: {
-	image: 'vr_imgs/carpark.JPG',
-    preview: 'vr_imgs/carpark.JPG'
+	image: 'carpark.JPG',
+    preview: 'carpark.JPG'
   },
 };
 
@@ -62,8 +62,8 @@ function loadScene(id) {
 
   // Set the image
   vrView.setContent({
-    image: scenes[id].image,
-    preview: scenes[id].preview,
+    image: "vr_imgs/"+scenes[id].image,
+    preview: "vr_imgs/"+scenes[id].preview,
     is_autopan_off: true
   });
 
