@@ -16,25 +16,29 @@ var vrView;
 
 // All the scenes for the experience
 var scenes = {
-  petra: {
-    image: 'petra.jpg',
-    preview: 'petra-preview.jpg'
+  medicalCentre: {
+    image: 'medical-center.JPG',
+    preview: 'medical-center.JPG'
   },
-  christTheRedeemer: {
-    image: 'christ-redeemer.jpg',
-    preview: 'christ-redeemer-preview.jpg'
+  redApple: {
+    image: 'red-apple.JPG',
+    preview: 'red-apple.JPG'
   },
-  machuPicchu: {
-    image: 'machu-picchu.jpg',
-    preview: 'machu-picchu-preview.jpg'
+  emergencyClinic: {
+    image: 'emergencyclinic.JPG',
+    preview: 'emergencyclinic.JPG'
   },
-  chichenItza: {
-    image: 'chichen-itza.jpg',
-    preview: 'chichen-itza-preview.jpg'
+  boxkite: {
+    image: 'boxkite.JPG',
+    preview: 'boxkite.JPG'
   },
-  tajMahal: {
+  hotelLobby: {
 	image: 'hotel-lobby.jpg',
     preview: 'hotel-lobby.jpg'
+  },
+  carpark: {
+	image: 'carpark.JPG',
+    preview: 'carpark.JPG'
   },
 };
 
