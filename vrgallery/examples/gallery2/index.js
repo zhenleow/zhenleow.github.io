@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 var vrView;
-var cars = ["1", "2", "3", "4", "5", "6", "7"];
+var levels = ["1", "2", "3", "4", "5", "6", "7"];
 
 // All the scenes for the experience
 var scenes = {
@@ -56,6 +56,7 @@ function onLoad() {
   vrView.on('modechange', onModeChange);
   vrView.on('getposition', onGetPosition);
   vrView.on('error', onVRViewError);
+  generateLvlBtn();
 }
 
 function loadScene(id) {
@@ -110,3 +111,14 @@ function onGetPosition(e) {
 }
 
 window.addEventListener('load', onLoad);
+
+function generateLvlBtn(){
+  for (var i=0; i < levels.length; i++){
+     buttons = $('<div class="btn-group mr-2" role="group" aria-label="First group"></div>');
+
+       buttons.html("<button type="button" class="btn btn-secondary">'" + levels[i] + "'</button>");
+
+        $("#level_buttons").append(buttons);
+      }
+    }
+
