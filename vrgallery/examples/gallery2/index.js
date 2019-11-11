@@ -25,8 +25,8 @@ var scenes = {
     preview: 'red-apple.JPG'
   },
   emergencyClinic: {
-    image: 'emergencyclinic.JPG',
-    preview: 'emergencyclinic.JPG'
+    image: 'emergency-clinic.JPG',
+    preview: 'emergency-clinic.JPG'
   },
   boxkite: {
     image: 'boxkite.JPG',
