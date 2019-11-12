@@ -117,9 +117,10 @@ function generateLvlBtn(){
   for (var i=0; i < levels.length; i++){
 	 //var htmlStr="";
 	 //htmlStr=htmlStr+="<button type='button' class='btn btn-secondary'>" + levels[i] + "</button>";
-buttons.html("<button type='button' class='btn btn-secondary'>" + levels[i] + "</button>");
-     $("#level_buttons").append(buttons);
-   }
+	buttons.append("<button type='button' class='btn btn-secondary'>" + levels[i] + "</button>");
+
+  }
+  $("#level_buttons").append(buttons);
 }
 
 $('#level_buttons').on('click', 'input', function(e){
