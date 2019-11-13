@@ -43,6 +43,19 @@ var scenes = {
   },
 };
 
+var scencesObj = [];
+
+$(document).ready(function() {
+    $.ajax({
+        url: "http://rest-service.guides.spring.io/greeting"
+    }).then(function(data) {
+		var facility = {facility_id: data.id, write_up: data.content};
+
+		var data = [];
+		scencesObj.push(facility);
+    });
+});
+
 function onLoad() {
   vrView = new VRView.Player('#vrview', {
     width: '100%',
