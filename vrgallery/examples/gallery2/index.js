@@ -126,11 +126,11 @@ function onGetPosition(e) {
 window.addEventListener('load', onLoad);
 
 function generateLvlBtn(){
+  buttons = $('<div class="btn-group mr-2" role="group" aria-label="First group"></div>');
   for (var i=0; i < levels.length; i++){
-     buttons = $('<div class="btn-group mr-2" role="group" aria-label="First group"></div>');
-     buttons.html("<button type='button' class='btn btn-secondary'>" + levels[i] + "</button>");
-     $("#level_buttons").append(buttons);
-   }
+	buttons.append("<button type='button' class='btn btn-secondary'>" + levels[i] + "</button>");
+  }
+  $("#level_buttons").append(buttons);
 }
 
 $('#level_buttons').on('click', 'input', function(e){
