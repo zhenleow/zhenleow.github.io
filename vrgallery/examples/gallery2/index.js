@@ -46,7 +46,12 @@ var scenes = {
 var scencesObj = [];
 
 $(document).ready(function() {
-    $.ajax({
+	$.getJSON("https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilities.json", function(data){
+		for (var i = 0, len = data.length; i < len; i++) {
+			console.log(data[i]);
+		}
+	});
+    /*$.ajax({
         url: "https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilities.json"
     }).then(function(data) {
 		alert(data.results);
@@ -54,7 +59,7 @@ $(document).ready(function() {
 
 		//var data = [];
 		//scencesObj.push(facility);
-    });
+    });*/
 });
 
 function onLoad() {
