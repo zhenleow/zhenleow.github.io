@@ -55,8 +55,9 @@ $(document).ready(function() {
 		$.each(data, function (index, value) {
 			console.log(value);
 			scencesObj.push(value);
-			console.log(scencesObj.length);
+			//console.log(scencesObj.length);
 			console.log(scencesObj);
+			console.log(scencesObj[i].name);
 			//console.log(value["writeup"].toString());
 		});
 	});
