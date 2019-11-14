@@ -55,13 +55,13 @@ $(document).ready(function() {
 		}
 	});*/
     $.ajax({
-        url: "https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilities.json"
+        url: "https://www.dropbox.com/s/qjq94ldh54fjvy3/twitter.json?dl=0"
     }).then(function(data) {
-		for (var i = 0, len = data.length; i < len; i++) {
+		/*for (var i = 0, len = data.length; i < len; i++) {
 			console.log(data[i]);
-			//alert(data[i]);
+			//alert(data[i]);*/
 		
-		//alert(data.length);
+		console.log(data);
 		//var facility = {facility_id: data.id, write_up: data.content};
 
 		//var data = [];
