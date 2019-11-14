@@ -1,0 +1,70 @@
+{
+   "results":[
+      {
+         "@name":"1",
+         "@path":"/gadgets/1",
+         "@id":"668e2263-0762-4ab1-b7c4-00943167a05e",
+         "@nodeType":"gadget",
+         "arType":"3",
+         "baseImageDimensionHeight":"50",
+         "jcr:createdBy":"admin",
+         "name":"Red Apple",
+         "baseImageDimensionWidth":"50.0",
+         "level":"1",
+         "jcr:created":"2019-11-12T13:51:37.889+08:00",
+         "mgnl:created":"2019-11-12T13:51:37.889+08:00",
+         "writeup":"The red apple in Farrer Park Hospital&rsquo;s lobby is representative of Apollo, the Greek god of healing. According to mythology, Apollo gave the science of medicine to man. His symbol greets you at our entrance because it represents our commitment to providing good and fair healthcare services to Singaporeans.",
+         "arImage":{
+            "@name":"2019-0912-Post-surgery-Wound-Care-Thumbnail-1.jpg",
+            "@path":"/2019-0912-Post-surgery-Wound-Care-Thumbnail-1.jpg",
+            "@id":"jcr:3dab211e-d868-4eeb-9331-072b88883e75",
+            "@link":"/farrerpark-webapp/dam/jcr:3dab211e-d868-4eeb-9331-072b88883e75/2019-0912%20Post-surgery%20Wound%20Care%20Thumbnail-1.jpg",
+            "metadata":{
+               "fileName":"2019-0912 Post-surgery Wound Care Thumbnail-1.jpg",
+               "mimeType":"image/jpeg",
+               "fileSize":"149855",
+               "height":"300",
+               "width":"600",
+               "format":"image/jpeg",
+               "creator":[
+                  "superuser"
+               ],
+               "date":"2019-11-04T23:23:59.226+08:00",
+               "created":"2019-11-04T23:23:59.226+08:00",
+               "modified":"2019-11-04T23:23:59.226+08:00"
+            }
+         },
+         "baseImage":{
+            "@name":"2019-0912-Post-surgery-Wound-Care-Thumbnail-1.jpg",
+            "@path":"/2019-0912-Post-surgery-Wound-Care-Thumbnail-1.jpg",
+            "@id":"jcr:3dab211e-d868-4eeb-9331-072b88883e75",
+            "@link":"/farrerpark-webapp/dam/jcr:3dab211e-d868-4eeb-9331-072b88883e75/2019-0912%20Post-surgery%20Wound%20Care%20Thumbnail-1.jpg",
+            "metadata":{
+               "fileName":"2019-0912 Post-surgery Wound Care Thumbnail-1.jpg",
+               "mimeType":"image/jpeg",
+               "fileSize":"149855",
+               "height":"300",
+               "width":"600",
+               "format":"image/jpeg",
+               "creator":[
+                  "superuser"
+               ],
+               "date":"2019-11-04T23:23:59.226+08:00",
+               "created":"2019-11-04T23:23:59.226+08:00",
+               "modified":"2019-11-04T23:23:59.226+08:00"
+            }
+         },
+         "mgnl:createdBy":"superuser",
+         "mgnl:lastModified":"2019-11-12T13:52:07.232+08:00",
+         "arOffsetY":"1.0",
+         "entityType":"FPH",
+         "arOffsetZ":"1.0",
+         "facilityType":"Public",
+         "mgnl:lastModifiedBy":"superuser",
+         "arOffsetX":"0.5",
+         "@nodes":[
+
+         ]
+      }
+   ]
+}
