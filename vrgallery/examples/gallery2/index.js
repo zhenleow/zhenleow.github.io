@@ -48,7 +48,7 @@ var scencesObj = [];
 $(document).ready(function() {
 	//console.log("document ready");
 	$.getJSON("https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilities.json", function(data){
-		console.log(data);
+		//console.log(data);
 		/*for (var i = 0, len = data.length; i < len; i++) {
 			console.log("for"+i);
 		}*/
@@ -56,7 +56,7 @@ $(document).ready(function() {
 			console.log(value);
 			scencesObj.push(value);
 			console.log(scencesObj.length);
-			console.log(data[index].name);
+			console.log(scencesObj);
 			//console.log(value["writeup"].toString());
 		});
 	});
