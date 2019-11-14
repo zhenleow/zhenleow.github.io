@@ -53,7 +53,7 @@ $(document).ready(function() {
 			console.log("for"+i);
 		}*/
 		$.each(data, function (index, value) {
-			//console.log(value["@id"].toString());
+			console.log(value);
 			scencesObj.push(value);
 			console.log(scencesObj.length);
 			console.log(data[index].name);
