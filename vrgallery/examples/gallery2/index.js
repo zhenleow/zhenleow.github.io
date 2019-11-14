@@ -56,8 +56,8 @@ $(document).ready(function() {
 			console.log(value);
 			scencesObj.push(value);
 			//console.log(scencesObj.length);
-			console.log(scencesObj);
-			console.log(scencesObj[0][0].name);
+			//console.log(scencesObj);
+			console.log(scencesObj[0][0].@id+","+scencesObj[0][0].name+","+scencesObj[0][0].writeup);
 			//console.log(value["writeup"].toString());
 		});
 	});
