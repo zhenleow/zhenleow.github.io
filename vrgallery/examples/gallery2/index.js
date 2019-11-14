@@ -53,6 +53,7 @@ $(document).ready(function() {
 			console.log("for"+i);
 		}*/
 		$.each(data, function (index, value) {
+			console.log(value["@id"].toString());
 			console.log(value["name"].toString());
 			console.log(value["writeup"].toString());
 		});
