@@ -61,16 +61,6 @@ $(document).ready(function() {
 			//console.log(value["writeup"].toString());
 		});
 	});
-    /*$.ajax({
-        url: "https://www.dropbox.com/s/qjq94ldh54fjvy3/twitter.json?dl=1"
-    }).then(function(data) {
-		
-		console.log(data);
-		//var facility = {facility_id: data.id, write_up: data.content};
-
-		//var data = [];
-		//scencesObj.push(facility);
-    });*/
 });
 
 function onLoad() {
