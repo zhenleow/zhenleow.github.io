@@ -55,7 +55,7 @@ $(document).ready(function() {
 		}
 	});*/
     $.ajax({
-        url: "https://www.dropbox.com/s/qjq94ldh54fjvy3/twitter.json?dl=0"
+        url: "https://www.dropbox.com/s/qjq94ldh54fjvy3/twitter.json?dl=1"
     }).then(function(data) {
 		/*for (var i = 0, len = data.length; i < len; i++) {
 			console.log(data[i]);
