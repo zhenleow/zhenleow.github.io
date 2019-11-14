@@ -53,7 +53,7 @@ $(document).ready(function() {
 			console.log("for"+i);
 		}*/
 		$.each(data, function (index, value) {
-			console.log(value);
+			console.log(value.writeup);
 		});
 	});
     /*$.ajax({
