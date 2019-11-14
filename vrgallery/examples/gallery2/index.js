@@ -47,12 +47,13 @@ var scencesObj = [];
 
 $(document).ready(function() {
     $.ajax({
-        url: "http://rest-service.guides.spring.io/greeting"
+        url: "https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilities.json"
     }).then(function(data) {
-		var facility = {facility_id: data.id, write_up: data.content};
+		alert(data);
+		//var facility = {facility_id: data.id, write_up: data.content};
 
-		var data = [];
-		scencesObj.push(facility);
+		//var data = [];
+		//scencesObj.push(facility);
     });
 });
 
