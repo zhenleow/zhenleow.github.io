@@ -49,7 +49,7 @@ $(document).ready(function() {
     $.ajax({
         url: "https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilities.json"
     }).then(function(data) {
-		alert(data);
+		alert(data.results);
 		//var facility = {facility_id: data.id, write_up: data.content};
 
 		//var data = [];
