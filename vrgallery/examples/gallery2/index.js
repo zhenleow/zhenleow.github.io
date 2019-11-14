@@ -48,7 +48,7 @@ var scencesObj = [];
 $(document).ready(function() {
 	console.log("document ready");
 	$.getJSON("https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilities.json", function(data){
-		console.log("get json");
+		console.log(data);
 		for (var i = 0, len = data.length; i < len; i++) {
 			console.log(data[i]);
 			//alert(data[i]);
