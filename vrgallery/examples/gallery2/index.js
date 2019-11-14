@@ -54,7 +54,9 @@ $(document).ready(function() {
 		}*/
 		$.each(data, function (index, value) {
 			//console.log(value["@id"].toString());
-			console.log(value["name"].toString());
+			console.log(data[index].name);
+			scencesObj.push(value);
+			console.log(scencesObj.length);
 			//console.log(value["writeup"].toString());
 		});
 	});
