@@ -61,7 +61,7 @@ $(document).ready(function() {
 			console.log(data[i]);
 			alert(data[i]);
 		}
-		//alert(data.results);
+		alert(data.length);
 		//var facility = {facility_id: data.id, write_up: data.content};
 
 		//var data = [];
