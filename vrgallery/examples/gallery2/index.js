@@ -49,9 +49,12 @@ $(document).ready(function() {
 	//console.log("document ready");
 	$.getJSON("https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilities.json", function(data){
 		console.log(data);
-		for (var i = 0, len = data.length; i < len; i++) {
+		/*for (var i = 0, len = data.length; i < len; i++) {
 			console.log("for"+i);
-		}
+		}*/
+		$.each(data, function (index, value) {
+			console.log(value);
+		});
 	});
     /*$.ajax({
         url: "https://www.dropbox.com/s/qjq94ldh54fjvy3/twitter.json?dl=1"
