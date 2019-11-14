@@ -47,22 +47,26 @@ var scencesObj = [];
 
 $(document).ready(function() {
 	alert("ready");
-	$.getJSON("https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilities.json", function(data){
+	/*$.getJSON("https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilities.json", function(data){
 		alert("getjson");
 		for (var i = 0, len = data.length; i < len; i++) {
 			console.log(data[i]);
 			alert(data[i]);
 		}
-	});
-    /*$.ajax({
+	});*/
+    $.ajax({
         url: "https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilities.json"
     }).then(function(data) {
-		alert(data.results);
+		for (var i = 0, len = data.length; i < len; i++) {
+			console.log(data[i]);
+			alert(data[i]);
+		}
+		//alert(data.results);
 		//var facility = {facility_id: data.id, write_up: data.content};
 
 		//var data = [];
 		//scencesObj.push(facility);
-    });*/
+    });
 });
 
 function onLoad() {
