@@ -57,7 +57,7 @@ $(document).ready(function() {
 			scencesObj.push(value);
 			//console.log(scencesObj.length);
 			console.log(scencesObj);
-			console.log(scencesObj[0].name);
+			console.log(scencesObj[0][0].name);
 			//console.log(value["writeup"].toString());
 		});
 	});
