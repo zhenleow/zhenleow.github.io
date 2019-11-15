@@ -55,6 +55,14 @@ $(document).ready(function() {
 		$.each(data, function (index, value) {
 			console.log(value);
 			scencesObj.push(value[0]);
+			
+			if ($.inArray(value[0].floorLevel, levels) >= 0) {
+			  console.log('level exists');
+			}else {
+			  console.log('level does not exists');
+			  levels.push(value[0].floorLevel);
+			}
+			
 			//console.log(scencesObj[0][0]["@id"]+","+scencesObj[0][0]["name"]+","+scencesObj[0][0]["writeup"]);
 			console.log(scencesObj[0]["@id"]+","+scencesObj[0]["name"]+","+scencesObj[0]["writeup"]);
 		});
