@@ -61,6 +61,7 @@ $(document).ready(function() {
 			}else {
 			  console.log('level does not exists');
 			  levels.push(value[0].floorLevel);
+			  console.log(levels);
 			}
 			
 			//console.log(scencesObj[0][0]["@id"]+","+scencesObj[0][0]["name"]+","+scencesObj[0][0]["writeup"]);
