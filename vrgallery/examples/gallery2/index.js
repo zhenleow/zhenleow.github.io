@@ -65,7 +65,7 @@ $(document).ready(function() {
 			}
 			
 			//console.log(scencesObj[0][0]["@id"]+","+scencesObj[0][0]["name"]+","+scencesObj[0][0]["writeup"]);
-			console.log(scencesObj[0]["@id"]+","+scencesObj[0]["name"]+","+scencesObj[0]["writeup"]);
+			console.log(scencesObj[0]["@id"]+","+scencesObj[0]["name"]+","+scencesObj[0]["snippet"]);
 		});
 	});
 });
