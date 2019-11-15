@@ -55,11 +55,7 @@ $(document).ready(function() {
 		$.each(data, function (index, value) {
 			console.log(value);
 			scencesObj.push(value);
-			//console.log(scencesObj.length);
-			//console.log(scencesObj);
-			console.log(scencesObj[0][0].name+","+scencesObj[0][0].writeup);
-			console.log(scencesObj[0][0]["@id"]);
-			//console.log(value["writeup"].toString());
+			console.log(scencesObj[0][0]["@id"]+","scencesObj[0][0]["name"]+","+scencesObj[0][0]["writeup"]);
 		});
 	});
 });
