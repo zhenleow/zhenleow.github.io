@@ -48,10 +48,6 @@ var scencesObj = [];
 $(document).ready(function() {
 	//console.log("document ready");
 	$.getJSON("https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilities.json", function(data){
-		//console.log(data);
-		/*for (var i = 0, len = data.length; i < len; i++) {
-			console.log("for"+i);
-		}*/
 		$.each(data, function (index, value) {
 			console.log(value);
 			scencesObj.push(value[0]);
@@ -64,7 +60,6 @@ $(document).ready(function() {
 			  console.log(levels);
 			}
 			
-			//console.log(scencesObj[0][0]["@id"]+","+scencesObj[0][0]["name"]+","+scencesObj[0][0]["writeup"]);
 			console.log(scencesObj[0]["@id"]+","+scencesObj[0]["name"]+","+scencesObj[0]["snippet"]);
 		});
 	});
