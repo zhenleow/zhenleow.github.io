@@ -15,6 +15,11 @@
 var vrView;
 var levels = ["1", "2", "3", "4", "5", "6", "7"];
 
+
+var base_url = "https://thetfpc.com";
+var facilities_url = "https://thetfpc.com/.rest/delivery/facilities" 
+//https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilities.json
+
 // All the scenes for the experience
 var scenes = {
   medicalCentre: {
@@ -49,7 +54,7 @@ $(document).ready(function() {
 	//console.log("document ready");
 	//https://thetfpc.com/.rest/delivery/facilities
 	
-	$.getJSON("https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilities.json", function(data){
+	$.getJSON(facilities_url, function(data){
 		$.each(data, function (index, value) {
 			console.log(value);
 			scencesObj.push(value[0]);
@@ -62,7 +67,8 @@ $(document).ready(function() {
 			  console.log(levels);
 			}
 			
-			console.log(scencesObj[0]["@id"]+","+scencesObj[0]["name"]+","+scencesObj[0]["snippet"]);
+			//console.log(scencesObj[0]["@id"]+","+scencesObj[0]["name"]+","+scencesObj[0]["snippet"]);
+			console.log(scencesObj);
 		});
 	});
 });
