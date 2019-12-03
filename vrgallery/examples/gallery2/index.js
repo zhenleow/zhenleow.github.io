@@ -152,6 +152,19 @@ function generateLvlBtn(){
 
 function generateSceneObjects(){
 	
+	sceneObj = $('');
+	
+	for (var i=0; i < scencesObj.length; i++){
+		buttons.append("");
+		/*<li>
+        <a href="#redApple">
+          <img src="vr_imgs/red-apple.JPG">
+          <small>Red Apple</small>
+        </a>
+      </li>*/
+	}
+	
+	$("#carousell").append(buttons);
 }
 
 $('#level_buttons').on('click', 'input', function(e){
