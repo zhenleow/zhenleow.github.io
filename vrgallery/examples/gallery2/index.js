@@ -47,6 +47,8 @@ var scencesObj = [];
 
 $(document).ready(function() {
 	//console.log("document ready");
+	//https://thetfpc.com/.rest/delivery/facilities
+	
 	$.getJSON("https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilities.json", function(data){
 		$.each(data, function (index, value) {
 			console.log(value);
@@ -140,6 +142,10 @@ function generateLvlBtn(){
 	buttons.append("<button type='button' class='btn btn-secondary'>" + levels[i] + "</button>");
   }
   $("#level_buttons").append(buttons);
+}
+
+function generateSceneObjects(){
+	
 }
 
 $('#level_buttons').on('click', 'input', function(e){
