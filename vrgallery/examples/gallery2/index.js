@@ -94,9 +94,15 @@ function loadScene(id) {
   console.log('loadScene', id);
 
   // Set the image
-  vrView.setContent({
+  /*vrView.setContent({
     image: "vr_imgs/"+scenes[id].image,
     preview: "vr_imgs/"+scenes[id].preview,
+    is_autopan_off: true
+  });*/
+  
+  vrView.setContent({
+    image: base_url+scencesObj[id][0]["vrImage"]["@link"],
+    preview: base_url+scencesObj[id][0]["vrThumbnail"]["@link"],
     is_autopan_off: true
   });
 
@@ -126,7 +132,7 @@ function onVRViewReady(e) {
     });
   }
 
-  loadScene('redApple');
+  loadScene(scencesObj[0][0]["@id"]);
 }
 
 function onModeChange(e) {
@@ -157,7 +163,11 @@ function generateSceneObjects(){
 	
 	for (var i=0; i < scencesObj.length; i++){
 		sceneObj.append("<li>");
-		//sceneObj.append("a href=\""+scencesObj[i].");
+		//sceneObj.append("<a href=\"#"+scencesObj[i][0]["@id"]+">");
+		sceneObj.append("<a href=\"#"+i+">");
+	    sceneObj.append("<img src=\""+base_url+scencesObj[i][0]["vrThumbnail"]["@link"]+">");
+		sceneObj.append("<small>"+scencesObj[i][0]["name"]+"</small>");
+		sceneObj.append("</a></li>");
 		/*<li>
         <a href="#redApple">
           <img src="vr_imgs/red-apple.JPG">
@@ -166,7 +176,7 @@ function generateSceneObjects(){
       </li>*/
 	}
 	
-	$("#carousell").append(buttons);
+	$("#carousell").append(sceneObj);
 }
 
 $('#level_buttons').on('click', 'input', function(e){
