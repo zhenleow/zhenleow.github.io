@@ -68,7 +68,7 @@ $(document).ready(function() {
 			}
 			
 			console.log(scencesObj[0]["@id"]+","+scencesObj[0]["name"]+","+scencesObj[0]["snippet"]);
-			console.log(scencesObj[0]["vrImage"]["@link"]+");
+			console.log(scencesObj[0]["vrImage"]["@link"]);
 			//console.log(scencesObj);
 		});
 	});
