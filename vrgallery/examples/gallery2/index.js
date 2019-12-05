@@ -17,8 +17,8 @@ var levels = ["1", "2", "3", "4", "5", "6", "7"];
 
 
 var base_url = "https://thetfpc.com";
-var facilities_url = "https://thetfpc.com/.rest/delivery/facilities" 
-//https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilities.json
+//var facilities_url = "https://thetfpc.com/.rest/delivery/facilities" 
+var facilities_url = https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilities.json
 
 // All the scenes for the experience
 var scenes = {
@@ -67,8 +67,8 @@ $(document).ready(function() {
 			  console.log(levels);
 			}
 			
-			//console.log(scencesObj[0]["@id"]+","+scencesObj[0]["name"]+","+scencesObj[0]["snippet"]);
-			console.log(scencesObj);
+			console.log(scencesObj[0]["@id"]+","+scencesObj[0]["name"]+","+scencesObj[0]["snippet"]);
+			//console.log(scencesObj);
 		});
 	});
 });
@@ -155,7 +155,8 @@ function generateSceneObjects(){
 	sceneObj = $('');
 	
 	for (var i=0; i < scencesObj.length; i++){
-		buttons.append("");
+		sceneObj.append("<li>");
+		//sceneObj.append("a href=\""+scencesObj[i].");
 		/*<li>
         <a href="#redApple">
           <img src="vr_imgs/red-apple.JPG">
