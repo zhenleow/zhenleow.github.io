@@ -14,7 +14,7 @@
  */
 var vrView;
 var levels = ["1", "2", "3", "4", "5", "6", "7"];
-
+var firstSceneId;
 
 var base_url = "https://thetfpc.com";
 //var facilities_url = "https://thetfpc.com/.rest/delivery/facilities" 
@@ -53,25 +53,32 @@ var scencesObj = [];
 $(document).ready(function() {
 	//console.log("document ready");
 	//https://thetfpc.com/.rest/delivery/facilities
-	
+	var count=0;
 	$.getJSON(facilities_url, function(data){
 		$.each(data, function (index, value) {
-			console.log(value);
-			scencesObj.push(value[0]);
+			//console.log(value[0]["@id"]);
+			console.log(index);
+			//scencesObj.push(value[0]);
+			if(count==0)
+			{
+				firstSceneId = value[0]["@id"];
+				console.log(firstSceneId);
+			}
+			scencesObj[value[0]["@id"]] = value[0];
 			
 			if ($.inArray(value[0].floorLevel, levels) >= 0) {
-			  console.log('level exists');
+			  //console.log('level exists');
 			}else {
-			  console.log('level does not exists');
+			  //console.log('level does not exists');
 			  levels.push(value[0].floorLevel);
 			  //console.log(levels);
 			}
 			
 			//console.log(scencesObj[0]["@id"]+","+scencesObj[0]["name"]+","+scencesObj[0]["snippet"]);
 			//console.log(scencesObj[0]["vrImage"]["@link"]);
-			
+			count++;
 		});
-		console.log(scencesObj);
+		//console.log(scencesObj);
 	});
 });
 
@@ -93,7 +100,7 @@ function onLoad() {
 }
 
 function loadScene(id) {
-  console.log('loadScene', id);
+  //console.log('loadScene', id);
 
   // Set the image
   /*vrView.setContent({
@@ -102,9 +109,10 @@ function loadScene(id) {
     is_autopan_off: true
   });*/
   
+  //console.log(scencesObj[id]);
   vrView.setContent({
-    image: base_url+scencesObj[id][0]["vrImage"]["@link"],
-    preview: base_url+scencesObj[id][0]["vrThumbnail"]["@link"],
+    image: base_url+scencesObj[id]["vrImage"]["@link"],
+    preview: base_url+scencesObj[id]["vrThumbnail"]["@link"],
     is_autopan_off: true
   });
 
@@ -134,7 +142,7 @@ function onVRViewReady(e) {
     });
   }
 
-  loadScene(scencesObj[0]["@id"]);
+  loadScene(firstSceneId);
 }
 
 function onModeChange(e) {
@@ -177,7 +185,7 @@ function generateSceneObjects(){
         </a>
       </li>*/
 	}
-	
+	console.log(sceneObj);
 	$("#carousell").append(sceneObj);
 }
 
