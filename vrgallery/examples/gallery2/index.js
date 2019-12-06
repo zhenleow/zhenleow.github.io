@@ -133,7 +133,7 @@ function onVRViewReady(e) {
     });
   }
 
-  loadScene(scencesObj[0][0]["@id"]);
+  loadScene(scencesObj[0]["@id"]);
 }
 
 function onModeChange(e) {
@@ -166,8 +166,8 @@ function generateSceneObjects(){
 		sceneObj.append("<li>");
 		//sceneObj.append("<a href=\"#"+scencesObj[i][0]["@id"]+">");
 		sceneObj.append("<a href=\"#"+i+">");
-	    sceneObj.append("<img src=\""+base_url+scencesObj[i][0]["vrThumbnail"]["@link"]+">");
-		sceneObj.append("<small>"+scencesObj[i][0]["name"]+"</small>");
+	    sceneObj.append("<img src=\""+base_url+scencesObj[i]["vrThumbnail"]["@link"]+">");
+		sceneObj.append("<small>"+scencesObj[i]["name"]+"</small>");
 		sceneObj.append("</a></li>");
 		/*<li>
         <a href="#redApple">
