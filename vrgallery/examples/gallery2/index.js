@@ -88,6 +88,7 @@ function onLoad() {
   vrView.on('getposition', onGetPosition);
   vrView.on('error', onVRViewError);
   generateLvlBtn();
+  generateSceneObjects();
 }
 
 function loadScene(id) {
