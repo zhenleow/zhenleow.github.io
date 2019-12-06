@@ -17,8 +17,8 @@ var levels = ["1", "2", "3", "4", "5", "6", "7"];
 
 
 var base_url = "https://thetfpc.com";
-//var facilities_url = "https://thetfpc.com/.rest/delivery/facilities" 
-var facilities_url = "https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilities.json";
+var facilities_url = "https://thetfpc.com/.rest/delivery/facilities" 
+//var facilities_url = "https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilities.json";
 
 // All the scenes for the experience
 var scenes = {
