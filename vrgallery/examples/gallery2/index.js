@@ -18,11 +18,11 @@ var scencesObj = [];
 var firstSceneId;
 
 var base_url = "https://thetfpc.com";
-var facilities_url = "https://thetfpc.com/.rest/delivery/facilities" 
-//var facilities_url = "https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilitiesv2.json";
+//var facilities_url = "https://thetfpc.com/.rest/delivery/facilities" 
+var facilities_url = "https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilitiesv2.json";
 
-var sub_facilities_url = "https://thetfpc.com/.rest/delivery/subfacilities" 
-//var sub_facilities_url = "https://zhenleow.github.io/vrgallery/examples/gallery2/json/subfacilitiesv2.json";
+//var sub_facilities_url = "https://thetfpc.com/.rest/delivery/subfacilities" 
+var sub_facilities_url = "https://zhenleow.github.io/vrgallery/examples/gallery2/json/subfacilitiesv2.json";
 
 // All the scenes for the experience
 var scenes = {
