@@ -115,19 +115,26 @@ function loadScene(id) {
   var hotspots = scencesObj[id]["hotspots"];
 	console.log(hotspots);
 	for(var key in hotspots){
-		console.log(hotspots[key])
-		$.getJSON(sub_facilities_url, function(data){
+		console.log(hotspots[key]);
+		var value = hotspots[key];
+		$.getJSON(sub_facilities_url+"?"+@jcr:uuid="+key, function(data){
 				$.each(data.results, function (index, value) {
-					console.log(value["vrImage"]["@link"];
-					vrView.addHotspot('dining-room', {
+					/*vrView.addHotspot('dining-room', {
 					  pitch: 30, // In degrees. Up is positive.
 					  yaw: 20, // In degrees. To the right is positive.
 					  radius: 0.05, // Radius of the circular target in meters.
 					  distance: 2 // Distance of target from camera in meters.
+					});*/
+					vrView.addHotspot(value["name"], {
+					  pitch: value["pitch"], // In degrees. Up is positive.
+					  yaw: value["yaw"], // In degrees. To the right is positive.
+					  radius: value["radius"], // Radius of the circular target in meters.
+					  distance: value["distance"] // Distance of target from camera in meters.
 					});
 					vrView.on('click', function(event) {
 					if (event.id == myHotspotId) {
 						// Handle hotspot click.
+						console.log(value["vrImage"]["@link"];
 					  }
 					});
 				});
