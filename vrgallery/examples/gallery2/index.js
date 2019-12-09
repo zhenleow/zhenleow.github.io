@@ -206,23 +206,6 @@ function retrieveHotSpotsAndAdd(){
 		console.log(hotspots);
 		for(var key2 in hotspots){
 			console.log(hotspots[key2])
-			
-			/*$.getJSON(sub_facilities_url, function(data){
-				$.each(data.results, function (index, value) {
-					console.log(value["vrImage"]["@link"];
-					vrView.addHotspot('dining-room', {
-					  pitch: 30, // In degrees. Up is positive.
-					  yaw: 20, // In degrees. To the right is positive.
-					  radius: 0.05, // Radius of the circular target in meters.
-					  distance: 2 // Distance of target from camera in meters.
-					});
-					vrView.on('click', function(event) {
-					if (event.id == myHotspotId) {
-						// Handle hotspot click.
-					  }
-					});
-				});
-			});*/
 		}
 	}
 }
