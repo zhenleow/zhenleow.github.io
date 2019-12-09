@@ -21,6 +21,9 @@ var base_url = "https://thetfpc.com";
 var facilities_url = "https://thetfpc.com/.rest/delivery/facilities" 
 //var facilities_url = "https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilitiesv2.json";
 
+var sub_facilities_url = "https://thetfpc.com/.rest/delivery/subfacilities" 
+//var sub_facilities_url = "https://zhenleow.github.io/vrgallery/examples/gallery2/json/subfacilitiesv2.json";
+
 // All the scenes for the experience
 var scenes = {
   medicalCentre: {
@@ -59,7 +62,6 @@ $(document).ready(function() {
 			if(count==0)
 			{
 				firstSceneId = value["@id"];
-				console.log(firstSceneId);
 			}
 			scencesObj[value["@id"]] = value;
 			if ($.inArray(value.floorLevel, levels) >= 0) {
@@ -70,16 +72,9 @@ $(document).ready(function() {
 			count++;
 		});
 		console.log(scencesObj);
-		//generate-carousell-start
-		var caroul = $('<ul id= "carousell" class="carousel">');
-		for(var key in scencesObj) {
-		  var value = scencesObj[key];
-		  caroul.append("<li><a href='#"+value["@id"]+"'><img src='"+base_url+value["vrThumbnail"]["@link"]+"'><small>"+value["name"]+"</small></a></li>");
-		}
-		caroul.append("</ul>");
-		$("#carousell_div").append(caroul);
-		 generateLvlBtn();
-		//generate-carousell-end
+		generateLvlBtn();
+		generateSceneObjects();
+		retrieveHotSpotsAndAdd();
 	});
 });
 
@@ -96,8 +91,6 @@ function onLoad() {
   vrView.on('modechange', onModeChange);
   vrView.on('getposition', onGetPosition);
   vrView.on('error', onVRViewError);
-  //generateLvlBtn();
-  //generateSceneObjects();
 }
 
 function loadScene(id) {
@@ -161,39 +154,28 @@ function generateLvlBtn(){
   $("#level_buttons").append(buttons);
 }
 
-function generateSceneObjects(obj){
-	console.log(obj);
-	var id="db5ecebd-0e4a-4864-865e-7b6d2c5de2c9";
-	console.log(obj[firstSceneId]["vrImage"]["@link"]);
-	/*for(var key in scencesObj) {
-	  console.log("generateSceneObjects-forloop");
-	  var value = scencesObj[key];
-	  console.log(value);
-	}*/
-
-	//sceneObj = $('');
-	
-
-	/*for (var i=0; i < scencesObj.length; i++){
-		sceneObj.append("<li>");
-		//sceneObj.append("<a href=\"#"+scencesObj[i][0]["@id"]+">");
-		sceneObj.append("<a href=\"#"+i+">");
-	    sceneObj.append("<img src=\""+base_url+scencesObj[i]["vrThumbnail"]["@link"]+">");
-		sceneObj.append("<small>"+scencesObj[i]["name"]+"</small>");
-		sceneObj.append("</a></li>");*/
-		/*<li>
-        <a href="#redApple">
-          <img src="vr_imgs/red-apple.JPG">
-          <small>Red Apple</small>
-        </a>
-      </li>*/
-	//}
-	//console.log(sceneObj);
-	//$("#carousell").append(sceneObj);
+function generateSceneObjects(){
+	//generate-carousell-start
+	var caroul = $('<ul id= "carousell" class="carousel">');
+	for(var key in scencesObj) {
+		var value = scencesObj[key];
+		caroul.append("<li><a href='#"+value["@id"]+"'><img src='"+base_url+value["vrThumbnail"]["@link"]+"'><small>"+value["name"]+"</small></a></li>");
+	}
+	caroul.append("</ul>");
+	$("#carousell_div").append(caroul);
+	//generate-carousell-end
 }
 
 $('#level_buttons').on('click', 'input', function(e){
     console.log("click: ", e.target.value);
 });
+
+function retrieveHotSpotsAndAdd(){
+	for(var key in scencesObj) {
+		var value = scencesObj[key];
+		var hotspots = value["hotspots"];
+		console.log(hotspots);
+	}
+}
 	
 
