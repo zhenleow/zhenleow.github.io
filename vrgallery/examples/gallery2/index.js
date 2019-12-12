@@ -74,7 +74,6 @@ $(document).ready(function() {
 		//console.log(scencesObj);
 		generateLvlBtn();
 		generateSceneObjects();
-		//retrieveHotSpotsAndAdd();
 	});
 });
 
@@ -111,6 +110,12 @@ function loadScene(id) {
   // Highlight current carousel item
   document.querySelector('ul.carousel li a[href="#' + id + '"]')
       .classList.add('current');
+
+	var element = document.getElementById("title");
+	element.innerHTML = scencesObj[id]["name"];
+	
+	element = document.getElementById("desc");
+	element.innerHTML = scencesObj[id]["writeup"];
 
   console.log(scencesObj[id]);
   var hotspots = scencesObj[id]["hotspots"];
@@ -194,9 +199,13 @@ function generateLvlBtn(){
   buttons = $('<div class="btn-group mr-2" role="group" aria-label="First group"></div>');
   levels.sort((a, b) => a - b);
   for (var i=0; i < levels.length; i++){
-	buttons.append("<button type='button' class='btn btn-secondary'>" + levels[i] + "</button>");
+	buttons.append("<button type='button' class='btn btn-secondary' onclick='refreshVrImages()'>" + levels[i] + "</button>");
   }
   $("#level_buttons").append(buttons);
+}
+
+function refreshVrImages(){
+	console.log("refreshVrImages");
 }
 
 function generateSceneObjects(){
