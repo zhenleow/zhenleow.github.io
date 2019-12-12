@@ -18,14 +18,14 @@ var scencesObj = [];
 var firstSceneId;
 
 var base_url = "https://thetfpc.com";
-//var facilities_url = "https://thetfpc.com/.rest/delivery/facilities" 
-var facilities_url = "https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilitiesv2.json";
+var facilities_url = "https://thetfpc.com/.rest/delivery/facilities" 
+//var facilities_url = "https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilitiesv2.json";
 
-//var sub_facilities_url = "https://thetfpc.com/.rest/delivery/subfacilities" 
-var sub_facilities_url = "https://zhenleow.github.io/vrgallery/examples/gallery2/json/subfacilitiesv2.json";
+var sub_facilities_url = "https://thetfpc.com/.rest/delivery/subfacilities" 
+//var sub_facilities_url = "https://zhenleow.github.io/vrgallery/examples/gallery2/json/subfacilitiesv2.json";
 
 // All the scenes for the experience
-var scenes = {
+/*var scenes = {
   medicalCentre: {
     image: 'medical-center.JPG',
     preview: 'medical-center.JPG'
@@ -50,7 +50,7 @@ var scenes = {
 	image: 'carpark.JPG',
     preview: 'carpark.JPG'
   },
-};
+};*/
 
 $(document).ready(function() {
 	//console.log("document ready");
@@ -71,10 +71,10 @@ $(document).ready(function() {
 
 			count++;
 		});
-		console.log(scencesObj);
+		//console.log(scencesObj);
 		generateLvlBtn();
 		generateSceneObjects();
-		retrieveHotSpotsAndAdd();
+		//retrieveHotSpotsAndAdd();
 	});
 });
 
@@ -94,7 +94,7 @@ function onLoad() {
 }
 
 function loadScene(id) {
-  //console.log('loadScene', id);
+  console.log('loadScene', id);
 
   vrView.setContent({
     image: base_url+scencesObj[id]["vrImage"]["@link"],
@@ -111,35 +111,45 @@ function loadScene(id) {
   // Highlight current carousel item
   document.querySelector('ul.carousel li a[href="#' + id + '"]')
       .classList.add('current');
-	  
+
+  console.log(scencesObj[id]);
   var hotspots = scencesObj[id]["hotspots"];
-	console.log(hotspots);
-	for(var key in hotspots){
-		console.log(hotspots[key]);
-		var value = hotspots[key];
-		$.getJSON(sub_facilities_url+"?"+@jcr:uuid="+key, function(data){
+  //console.log(hotspots[0]);
+  
+  try{
+	for(var j = 0; j < hotspots.length; j++){
+		//console.log(hotspots[key]);
+		var key = hotspots[j];
+		console.log(sub_facilities_url+"?@jcr:uuid="+key);
+		
+		$.getJSON(sub_facilities_url+"?@jcr:uuid="+key, function(data){
 				$.each(data.results, function (index, value) {
-					/*vrView.addHotspot('dining-room', {
+					vrView.addHotspot('dining-room', {
 					  pitch: 30, // In degrees. Up is positive.
 					  yaw: 20, // In degrees. To the right is positive.
 					  radius: 0.05, // Radius of the circular target in meters.
 					  distance: 2 // Distance of target from camera in meters.
-					});*/
-					vrView.addHotspot(value["name"], {
+					});
+					/*vrView.addHotspot(value["name"], {
 					  pitch: value["pitch"], // In degrees. Up is positive.
 					  yaw: value["yaw"], // In degrees. To the right is positive.
 					  radius: value["radius"], // Radius of the circular target in meters.
 					  distance: value["distance"] // Distance of target from camera in meters.
-					});
+					});*/
+					console.log(value["name"]+value["pitch"]+value["yaw"]+value["radius"]+value["distance"]);
 					vrView.on('click', function(event) {
 					if (event.id == myHotspotId) {
 						// Handle hotspot click.
-						console.log(value["vrImage"]["@link"];
+						console.log(value["vrImage"]["@link"]);
 					  }
 					});
 				});
 			});
 	}
+  }
+  catch(err) {
+	console.log("No hotspot for facility "+id);
+  }
 }
 
 function onVRViewReady(e) {
@@ -158,6 +168,7 @@ function onVRViewReady(e) {
   }
 
   loadScene(firstSceneId);
+  //loadScene("19c4273f-2009-4d60-8352-559bdebb34a0");
 }
 
 function onModeChange(e) {
@@ -169,7 +180,7 @@ function onVRViewError(e) {
 }
 
 function onGetPosition(e) {
-    console.log(e)
+    console.log(e);
 }
 
 window.addEventListener('load', onLoad);
@@ -199,7 +210,7 @@ $('#level_buttons').on('click', 'input', function(e){
     console.log("click: ", e.target.value);
 });
 
-function retrieveHotSpotsAndAdd(){
+/*function retrieveHotSpotsAndAdd(){
 	for(var key in scencesObj) {
 		var value = scencesObj[key];
 		var hotspots = value["hotspots"];
@@ -208,6 +219,6 @@ function retrieveHotSpotsAndAdd(){
 			console.log(hotspots[key2])
 		}
 	}
-}
+}*/
 	
 
