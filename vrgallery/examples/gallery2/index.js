@@ -199,13 +199,13 @@ function generateLvlBtn(){
   buttons = $('<div class="btn-group mr-2" role="group" aria-label="First group"></div>');
   levels.sort((a, b) => a - b);
   for (var i=0; i < levels.length; i++){
-	buttons.append("<button type='button' class='btn btn-secondary' onclick='refreshVrImages()'>" + levels[i] + "</button>");
+	buttons.append("<button type='button' class='btn btn-secondary' onclick='refreshVrImages(this.value)' value='"+levels[i]+"'>" + levels[i] + "</button>");
   }
   $("#level_buttons").append(buttons);
 }
 
-function refreshVrImages(){
-	console.log("refreshVrImages");
+function refreshVrImages(level){
+	console.log("refreshVrImages for "+level);
 }
 
 function generateSceneObjects(){
@@ -220,8 +220,8 @@ function generateSceneObjects(){
 	//generate-carousell-end
 }
 
-$('#level_buttons').on('click', 'input', function(e){
+/*$('#level_buttons').on('click', 'input', function(e){
     console.log("click: ", e.target.value);
-});
+});*/
 	
 
