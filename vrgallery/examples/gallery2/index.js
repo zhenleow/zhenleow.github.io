@@ -124,24 +124,29 @@ function loadScene(id) {
 		
 		$.getJSON(sub_facilities_url+"?@jcr:uuid="+key, function(data){
 				$.each(data.results, function (index, value) {
-					vrView.addHotspot('dining-room', {
+					vrView.addHotspot(key, {
 					  pitch: 30, // In degrees. Up is positive.
 					  yaw: 20, // In degrees. To the right is positive.
 					  radius: 0.05, // Radius of the circular target in meters.
 					  distance: 2 // Distance of target from camera in meters.
 					});
-					/*vrView.addHotspot(value["name"], {
+					/*vrView.addHotspot(key, {
 					  pitch: value["pitch"], // In degrees. Up is positive.
 					  yaw: value["yaw"], // In degrees. To the right is positive.
 					  radius: value["radius"], // Radius of the circular target in meters.
 					  distance: value["distance"] // Distance of target from camera in meters.
 					});*/
-					console.log(value["name"]+value["pitch"]+value["yaw"]+value["radius"]+value["distance"]);
+					console.log("name="+value["name"]+" pitch="+value["pitch"]+" yaw="+value["yaw"]+" radius="+value["radius"]+" distance="+value["distance"]);
 					vrView.on('click', function(event) {
-					if (event.id == myHotspotId) {
+					//if (event.id == myHotspotId) {
 						// Handle hotspot click.
-						console.log(value["vrImage"]["@link"]);
-					  }
+						//console.log(base_url+value["vrImage"]["@link"]);
+						vrView.setContent({
+							image: base_url+value["vrImage"]["@link"],
+							preview: base_url+value["vrImage"]["@link"],
+							is_autopan_off: true
+						});
+					  //}
 					});
 				});
 			});
@@ -209,16 +214,5 @@ function generateSceneObjects(){
 $('#level_buttons').on('click', 'input', function(e){
     console.log("click: ", e.target.value);
 });
-
-/*function retrieveHotSpotsAndAdd(){
-	for(var key in scencesObj) {
-		var value = scencesObj[key];
-		var hotspots = value["hotspots"];
-		console.log(hotspots);
-		for(var key2 in hotspots){
-			console.log(hotspots[key2])
-		}
-	}
-}*/
 	
 
