@@ -201,20 +201,13 @@ function generateLvlBtn(){
   $("#level_buttons").append(buttons);
 }
 
-/*function refreshVrImages(level){
-	console.log("refreshVrImages for "+level);
-	generateSceneObjects(level);
-}*/
-
 function generateSceneObjects(level){
-	//console.log("generateSceneObjects");
 	$("#carousell_div").html("");
 	//generate-carousell-start
 	var caroul = $('<ul id= "carousell" class="carousel">');
 	var count=0;
 	for(var key in scencesObj) {
 		var value = scencesObj[key];
-		//console.log(value["floorLevel"]+","+level);
 		if(value["floorLevel"]==level)
 		{
 			if(count==0)
@@ -230,9 +223,4 @@ function generateSceneObjects(level){
 	loadScene(firstSceneId);
 	//generate-carousell-end
 }
-
-/*$('#level_buttons').on('click', 'input', function(e){
-    console.log("click: ", e.target.value);
-});*/
-	
 
