@@ -55,25 +55,25 @@ var sub_facilities_url = "https://thetfpc.com/.rest/delivery/subfacilities"
 $(document).ready(function() {
 	//console.log("document ready");
 	//https://thetfpc.com/.rest/delivery/facilities
-	var count=0;
+	//var count=0;
 	$.getJSON(facilities_url, function(data){
 		//console.log(data.results);
 		$.each(data.results, function (index, value) {
-			if(count==0)
+			/*if(count==0)
 			{
 				firstSceneId = value["@id"];
-			}
+			}*/
 			scencesObj[value["@id"]] = value;
 			if ($.inArray(value.floorLevel, levels) >= 0) {
 			}else {
 			  levels.push(value.floorLevel);
 			}
 
-			count++;
+			//count++;
 		});
 		//console.log(scencesObj);
 		generateLvlBtn();
-		generateSceneObjects();
+		generateSceneObjects("1");
 	});
 });
 
@@ -176,9 +176,6 @@ function onVRViewReady(e) {
       loadScene(event.target.parentNode.getAttribute('href').substring(1));
     });
   }
-
-  loadScene(firstSceneId);
-  //loadScene("19c4273f-2009-4d60-8352-559bdebb34a0");
 }
 
 function onModeChange(e) {
@@ -199,24 +196,38 @@ function generateLvlBtn(){
   buttons = $('<div class="btn-group mr-2" role="group" aria-label="First group"></div>');
   levels.sort((a, b) => a - b);
   for (var i=0; i < levels.length; i++){
-	buttons.append("<button type='button' class='btn btn-secondary' onclick='refreshVrImages(this.value)' value='"+levels[i]+"'>" + levels[i] + "</button>");
+	buttons.append("<button type='button' class='btn btn-secondary' onclick='generateSceneObjects(this.value)' value='"+levels[i]+"'>" + levels[i] + "</button>");
   }
   $("#level_buttons").append(buttons);
 }
 
-function refreshVrImages(level){
+/*function refreshVrImages(level){
 	console.log("refreshVrImages for "+level);
-}
+	generateSceneObjects(level);
+}*/
 
-function generateSceneObjects(){
+function generateSceneObjects(level){
+	//console.log("generateSceneObjects");
+	$("#carousell_div").html("");
 	//generate-carousell-start
 	var caroul = $('<ul id= "carousell" class="carousel">');
+	var count=0;
 	for(var key in scencesObj) {
 		var value = scencesObj[key];
-		caroul.append("<li><a href='#"+value["@id"]+"'><img src='"+base_url+value["vrThumbnail"]["@link"]+"'><small>"+value["name"]+"</small></a></li>");
+		//console.log(value["floorLevel"]+","+level);
+		if(value["floorLevel"]==level)
+		{
+			if(count==0)
+			{
+				firstSceneId = value["@id"];
+			}
+			caroul.append("<li><a href='#"+value["@id"]+"'><img src='"+base_url+value["vrThumbnail"]["@link"]+"'><small>"+value["name"]+"</small></a></li>");
+			count++;
+		}
 	}
 	caroul.append("</ul>");
 	$("#carousell_div").append(caroul);
+	loadScene(firstSceneId);
 	//generate-carousell-end
 }
 
