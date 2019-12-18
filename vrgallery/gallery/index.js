@@ -20,23 +20,24 @@ var donotsaveImage=false;
 
 var base_url = "https://thetfpc.com";
 //var base_url = "https://thetfpcjhgjghj.com";
-//var facilities_url = "https://thetfpc.com/.rest/delivery/facilities" 
-var facilities_url = "https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilitiesv2.json";
+var facilities_url = "https://thetfpc.com/.rest/delivery/facilities" 
+//var facilities_url = "https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilitiesv2.jsonn";
 
 var sub_facilities_url = "https://thetfpc.com/.rest/delivery/subfacilities" 
-//var sub_facilities_url = "https://zhenleow.github.io/vrgallery/examples/gallery2/json/subfacilitiesv2.json";
+//var sub_facilities_url = "https://zhenleow.github.io/vrgallery/examples/gallery2/json/subfacilitiesv2.jsonn";
 
 $(document).ready(function() {
 	$.getJSON(facilities_url, function(data){
 		if(data)
 		{
-			console.log("facilities data exists");
+			console.log("facilities data exists from live");
 			localStorage.setItem('retrievedFacilities', JSON.stringify(data.results));
 			displayFacilities(data.results);
 		}
 		else
 		{
-			console.log("facilities data does exists");
+			console.log("facilities data does exists. Reading from cache.");
+			donotsaveImage=true;
 			var retrievedFacilities = localStorage.getItem('retrievedFacilities');
 			//console.log('retrievedFacilities: ', JSON.parse(retrievedFacilities));
 			displayFacilities(JSON.parse(retrievedFacilities));
@@ -44,25 +45,13 @@ $(document).ready(function() {
 	})
 	.done(function() { })
 	.fail(function() { 
-		console.log("facilities data retrieve failed");
+		console.log("facilities data retrieve failed. Reading from cache.");
+		donotsaveImage=true;
 		var retrievedFacilities = localStorage.getItem('retrievedFacilities');
 		//console.log('retrievedFacilities: ', JSON.parse(retrievedFacilities));
 		displayFacilities(JSON.parse(retrievedFacilities));
 	});
 });
-
-/*document.addEventListener('readystatechange', event => {
-
-    if (event.target.readyState === "interactive") {   //same as:  ..addEventListener("DOMContentLoaded".. and   jQuery.ready
-        alert("All HTML DOM elements are accessible");
-    }
-
-    if (event.target.readyState === "complete") {
-		saveFacilitiesImages();
-        alert("Now external resources are loaded too, like css,src etc... ");
-    }
-
-});*/
 
 function displayFacilities(json){
 	$.each(json, function (index, value) {
@@ -92,17 +81,17 @@ function onLoad() {
 
 function loadScene(id) {
   console.log('loadScene', id);
-
+  
   vrView.setContent({
 	image: base_url+scencesObj[id]["vrImage"]["@link"],
-	preview: base_url+scencesObj[id]["vrThumbnail"]["@link"],
+    preview: base_url+scencesObj[id]["vrThumbnail"]["@link"],
 	is_autopan_off: true
   });
 	  
-  /*//save vr image to localstorage-start
+  //save vr image to localstorage-start
   if(!donotsaveImage)
   {
-	  console.log("load from live");
+	  console.log("vrView image - load from live");
 	  
 	  vrView.setContent({
 		image: base_url+scencesObj[id]["vrImage"]["@link"],
@@ -112,19 +101,19 @@ function loadScene(id) {
 
 	  var vrviewItem = document.querySelector('#vrview_hidden');
 	  vrviewItem.src=base_url+scencesObj[id]["vrImage"]["@link"];
-	  console.log(vrviewItem);
+	  //console.log(vrviewItem);
 	  var imgCanvas = document.createElement("canvas"),
 	  imgContext = imgCanvas.getContext("2d");
 
 	  // Make sure canvas is as big as the picture
-	  imgCanvas.width = vrviewItem.width;
-	  imgCanvas.height = vrviewItem.height;
+	  imgCanvas.width = 600;
+	  imgCanvas.height = 300;
 
 	  // Draw image into canvas element
 	  imgContext.drawImage(vrviewItem, 0, 0, vrviewItem.width, vrviewItem.height);
 
 	  // Get canvas contents as a data URL
-	  var imgAsDataURL = imgCanvas.toDataURL("image/png");
+	  var imgAsDataURL = imgCanvas.toDataURL('image/jpeg', 1.0);
 
 	  // Save image into localStorage
 	  try {
@@ -134,18 +123,35 @@ function loadScene(id) {
 	  catch (e) {
 		  console.log("Storage failed: " + e);
 	  }
-	  
   }
-  else
+  /*else
   {	  
-	  console.log("load from cache");
+	  console.log("vrView image - load from cache");
+	  
+	  var imageURL = localStorage.getItem(scencesObj[id]["vrImage"]["@link"]);
+	  var vrviewItem = document.querySelector('#vrview_hidden');
+	  vrviewItem.src = localStorage.getItem(scencesObj[id]["vrThumbnail"]["@link"]);
+	  //console.log(imageURL);
+	  var imageURLThumbnail = localStorage.getItem(scencesObj[id]["vrThumbnail"]["@link"]);
+	  
+	  var block = imageURL.split(";");
+	  // Get the content type of the image
+	  var contentType = block[0].split(":")[1];// In this case "image/gif"
+	  // get the real base64 content of the file
+	  var realData = block[1].split(",")[1];// In this case "R0lGODlhPQBEAPeoAJosM...."
+
+	  // Convert it to a blob to upload
+	  var blob = b64toBlob(realData, contentType);
+	  //console.log(blob);
+	  //console.log(vrviewItem.src);
+	  //console.log("setting to boxkite image");
 	  vrView.setContent({
-		image: localStorage.getItem(scencesObj[id]["vrImage"]["@link"]),
-		preview: localStorage.getItem(scencesObj[id]["vrThumbnail"]["@link"]),
+		image: blob,
+		preview: blob,
 		is_autopan_off: true
 	  });
-  }
-  //save vr image to localstorage-end	*/
+  }*/
+  //save vr image to localstorage-end	
   
   // Unhighlight carousel items
   var carouselLinks = document.querySelectorAll('ul.carousel li a');
@@ -174,38 +180,89 @@ function loadScene(id) {
 		console.log(sub_facilities_url+"?@jcr:uuid="+key);
 		
 		$.getJSON(sub_facilities_url+"?@jcr:uuid="+key, function(data){
-				$.each(data.results, function (index, value) {
-					vrView.addHotspot(key, {
-					  pitch: 30, // In degrees. Up is positive.
-					  yaw: 20, // In degrees. To the right is positive.
-					  radius: 0.05, // Radius of the circular target in meters.
-					  distance: 2 // Distance of target from camera in meters.
-					});
-					/*vrView.addHotspot(key, {
-					  pitch: value["pitch"], // In degrees. Up is positive.
-					  yaw: value["yaw"], // In degrees. To the right is positive.
-					  radius: value["radius"], // Radius of the circular target in meters.
-					  distance: value["distance"] // Distance of target from camera in meters.
-					});*/
-					console.log("name="+value["name"]+" pitch="+value["pitch"]+" yaw="+value["yaw"]+" radius="+value["radius"]+" distance="+value["distance"]);
-					vrView.on('click', function(event) {
-					//if (event.id == myHotspotId) {
-						// Handle hotspot click.
-						//console.log(base_url+value["vrImage"]["@link"]);
-						vrView.setContent({
-							image: base_url+value["vrImage"]["@link"],
-							preview: base_url+value["vrImage"]["@link"],
-							is_autopan_off: true
-						});
-					  //}
-					});
-				});
+			
+				if(data)
+				{
+					console.log("sub facilities data exists from live");
+					localStorage.setItem(key, JSON.stringify(data.results));
+					displaySubFacilities(data.results,key);
+				}
+				else
+				{
+					console.log("sub facilities data does exists. Reading from cache.");
+					donotsaveImage=true;
+					var retrievedSubFacilities = localStorage.getItem(key);
+					//console.log('retrievedFacilities: ', JSON.parse(retrievedFacilities));
+					displaySubFacilities(JSON.parse(retrievedSubFacilities),key);
+				}
+			})
+			.done(function() { })
+			.fail(function() { 
+				console.log("sub facilities data retrieve failed. Reading from cache.");
+				donotsaveImage=true;
+				var retrievedSubFacilities = localStorage.getItem('retrievedFacilities');
+				//console.log('retrievedSubFacilities: ', JSON.parse(retrievedFacilities));
+				displaySubFacilities(JSON.parse(retrievedSubFacilities),key);
 			});
 	}
   }
   catch(err) {
 	console.log("No hotspot for facility "+id);
   }
+}
+
+/*function b64toBlob(b64Data, contentType, sliceSize) {
+        contentType = contentType || '';
+        sliceSize = sliceSize || 512;
+
+        var byteCharacters = atob(b64Data);
+        var byteArrays = [];
+
+        for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+            var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+            var byteNumbers = new Array(slice.length);
+            for (var i = 0; i < slice.length; i++) {
+                byteNumbers[i] = slice.charCodeAt(i);
+            }
+
+            var byteArray = new Uint8Array(byteNumbers);
+
+            byteArrays.push(byteArray);
+        }
+
+      var blob = new Blob(byteArrays, {type: contentType});
+      return blob;
+}*/
+
+function displaySubFacilities(json,key)
+{
+	$.each(json, function (index, value) {
+		vrView.addHotspot(key, {
+			pitch: 30, // In degrees. Up is positive.
+			yaw: 20, // In degrees. To the right is positive.
+			radius: 0.05, // Radius of the circular target in meters.
+		    distance: 2 // Distance of target from camera in meters.
+		});
+		/*vrView.addHotspot(key, {
+		    pitch: value["pitch"], // In degrees. Up is positive.
+		    yaw: value["yaw"], // In degrees. To the right is positive.
+			radius: value["radius"], // Radius of the circular target in meters.
+			distance: value["distance"] // Distance of target from camera in meters.
+		});*/
+		//console.log("name="+value["name"]+" pitch="+value["pitch"]+" yaw="+value["yaw"]+" radius="+value["radius"]+" distance="+value["distance"]);
+		vrView.on('click', function(event) {
+			if (event.id == key) {
+				// Handle hotspot click.
+				vrView.setContent({
+					image: base_url+value["vrImage"]["@link"],
+					preview: base_url+value["vrImage"]["@link"],
+					is_autopan_off: true
+				});
+			}
+
+		});
+	});	
 }
 
 function onVRViewReady(e) {
@@ -273,44 +330,6 @@ function generateSceneObjects(level){
 	//generate-carousell-end
 }
 
-function saveFacilitiesImages(){
-	console.log("saveFacilitiesImages");
-	if(!donotsaveImage)
-	{
-	  var carouselItems = document.querySelectorAll('ul.carousel li a img');
-	  for (var i = 0; i < carouselItems.length; i++) {
-		var storage_id=carouselItems[i].src.substring(base_url.length,carouselItems[i].src.length);
-		console.log("saveFacilitiesImages"+storage_id);
-		var imgItem = carouselItems[i];
-		console.log(imgItem);
-		
-		var imgCanvas = document.createElement("canvas"),
-		imgContext = imgCanvas.getContext("2d");
-
-		// Make sure canvas is as big as the picture
-		//imgCanvas.width = imgItem.width;
-		//imgCanvas.height = imgItem.height;
-
-		imgCanvas.width = 600;
-		imgCanvas.height = 300;
-		
-		// Draw image into canvas element
-		imgContext.drawImage(imgItem, 0, 0,600,300);
-		//console.log(imgItem.width, imgItem.height);
-		// Get canvas contents as a data URL
-		var imgAsDataURL = imgCanvas.toDataURL("image/png");
-		//var imgAsDataURL = imgCanvas.toDataURL();
-		
-		// Save image into localStorage
-		try {
-			localStorage.setItem(storage_id, imgAsDataURL);
-		}
-		catch (e) {
-			console.log("Storage failed: " + e);
-		}
-	  }
-	}
-}
 function loadImageFromLocalStorage(imgItem){
 	donotsaveImage=true;
 	//console.log(imgItem);
@@ -340,7 +359,7 @@ function cacheImage(imgItem){
 		imgContext.drawImage(imgItem, 0, 0,600,300);
 		//console.log(imgItem.width, imgItem.height);
 		// Get canvas contents as a data URL
-		var imgAsDataURL = imgCanvas.toDataURL("image/png");
+		var imgAsDataURL = imgCanvas.toDataURL('image/jpeg', 1.0);
 		//var imgAsDataURL = imgCanvas.toDataURL();
 			
 		// Save image into localStorage

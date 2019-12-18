@@ -57,12 +57,17 @@ function loadScene(id) {
   console.log('loadScene', id);
 
   // Set the image
-  vrView.setContent({
+  /*vrView.setContent({
     image: scenes[id].image,
     preview: scenes[id].preview,
     is_autopan_off: true
+  });*/
+  vrView.setContent({
+    image: 'boxkite.JPG',
+    preview: 'boxkite.JPG',
+    is_autopan_off: true
   });
-
+  
   // Unhighlight carousel items
   var carouselLinks = document.querySelectorAll('ul.carousel li a');
   for (var i = 0; i < carouselLinks.length; i++) {
