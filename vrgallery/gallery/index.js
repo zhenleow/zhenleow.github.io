@@ -18,8 +18,8 @@ var scencesObj = [];
 var firstSceneId;
 var donotsaveImage=false;
 
-//var base_url = "https://thetfpc.com";
-var base_url = "https://thetfpcjhgjghj.com";
+var base_url = "https://thetfpc.com";
+//var base_url = "https://thetfpcjhgjghj.com";
 //var facilities_url = "https://thetfpc.com/.rest/delivery/facilities" 
 var facilities_url = "https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilitiesv2.json";
 
