@@ -3,11 +3,17 @@
   src: url(gallery/fonts/titillium/font/titillium-web-v4-latin-regular.ttf);
 }*/
 
+@font-face {
+  font-family: 'defaultFont';
+  /*src: url('myfont.woff') format('woff'),*/ /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+   url('fonts\titillium-web\TitilliumWeb-Regular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}  
+
 html, body {
   margin: 0;
   padding: 0;
   /*font-family: "Roboto", Arial, sans-serif;*/
-  /*font-family: defaultFont;*/
+  font-family: defaultFont;
   font-family: "Titillium Web";
 }
 
