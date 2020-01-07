@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Farrer Park Hospital Virtual Tour</title>
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+	<!--<link href='https://fonts.googleapis.com/css?family=Titillium Web' rel='stylesheet'>-->
+	<link href="bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css">
+	<script src="https://storage.googleapis.com/vrview/2.0/build/vrview.min.js"></script>
+    <script src="index2.js"></script>
+    <style>
+	.btn-secondary {
+    background-color: #b93f3f !important;
+	border-color: #b93f3f !important;
+	}
+    .center {
+	  margin: auto;
+	  width: 50%;
+      overflow: auto;
+	}
+      ul.carousel {
+        display: flex;
+        width: 720px;
+        margin: 20px auto;
+        padding: 0;
+        justify-content: center;
+        overflow: auto;
+      }
+
+      /* MOBILE */
+      @media screen and (max-width: 700px) {
+        ul.carousel {
+          width: 100%;
+          justify-content: flex-start;
+        }
+
+          ul.carousel li:first-child {
+            padding-left: 0;
+          }
+
+          ul.carousel li:last-child {
+            padding-right: 0;
+          }
+      }
+
+        ul.carousel li {
+          list-style: none;
+          margin: 0;
+          padding: 0 10px;
+          display: inline-block;
+        }
+          ul.carousel li a {
+            display: inline-block;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            color: #999;
+            text-decoration: none;
+          }
+            ul.carousel li a.current {
+              color: blue;
+              text-decoration: underline;
+            }
+            ul.carousel li a img {
+              width: 124px;
+              height: 80px;
+            }
+            ul.carousel li a small {
+              display: block;
+            }
+    </style>
+  </head>
+  <body>
+    <h1>Farrer Park Hospital Virtual Tour</h1>
+
+    <div id="vrview"></div><img id="vrview_hidden" hidden/>
+
+    <h2 id="title">Red Apple</h2>
+    <p id="desc"> Video provides a powerful way to help you prove your point. When you click Online Video, you can paste in the embed code for the video you want to add. You can also type a keyword to search online for the video that best fits your document..</p>
+	
+	<div id="carousell_div">
+<!-- <ul id= "carousell" class="carousel">
+    <li>
+        <a href="#redApple">
+          <img src="vr_imgs/red-apple.JPG">
+          <small>Red Apple</small>
+        </a>
+      </li>
+      </li>
+    </ul>-->
+	</div>
+
+	<div class="center">
+	<table align="center">
+	<tr><td>Choose Level: </td>
+	<td>
+    <div id="level_buttons" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+	</div>
+	</td></tr>
+	</table>
+	<div>
+  </body>
+</html>
