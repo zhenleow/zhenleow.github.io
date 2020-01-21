@@ -51,10 +51,6 @@ $(document).ready(function() {
 		//console.log('retrievedFacilities: ', JSON.parse(retrievedFacilities));
 		displayFacilities(JSON.parse(retrievedFacilities));
 	});
-	
-	var type = getUrlParam('type','');
-	var id = getUrlParam('id','');
-	console.log("type="+type+",id="+id);
 });
 
 function getUrlVars() {
@@ -74,14 +70,32 @@ function getUrlParam(parameter, defaultvalue){
 }
 
 function displayFacilities(json){
+	console.log("displayFacilities");
 	$.each(json, function (index, value) {
 		scencesObj[value["@id"]] = value;
 		if ($.inArray(value.floorLevel, levels) < 0) {
 			levels.push(value.floorLevel);
 		}
 	});
-	generateLvlBtn();
-	generateSceneObjects("1");	
+	
+	console.log(scencesObj);
+	
+	var type = getUrlParam('type','');
+	var id = getUrlParam('id','');
+	console.log("type="+type+",id="+id);
+	
+	if(type=='s')
+	{
+		loadSceneSubFacilities(id);
+	}
+	else
+	{
+		loadScene(id);
+	}
+	
+
+	//generateLvlBtn();
+	//generateSceneObjects("1");	
 }
 
 function onLoad() {
@@ -102,16 +116,16 @@ function onLoad() {
 function loadScene(id) {
   console.log('loadScene', id);
   
-  vrView.setContent({
+  /*vrView.setContent({
 	image: 'boxkite.jpg',
     preview: 'boxkite.jpg',
     preview: 'boxkite.jpg',
 	is_autopan_off: true
-  });
+  });*/
 	  
   //save vr image to localstorage-start
-  if(!donotsaveImage)
-  {
+  //if(!donotsaveImage)
+  //{
 	  console.log("vrView image - load from live");
 	  
 	  vrView.setContent({
@@ -119,32 +133,35 @@ function loadScene(id) {
 		preview: base_url+scencesObj[id]["vrThumbnail"]["@link"],
 		is_autopan_off: true
 	  });
+	  
+	  var element = document.getElementById("title");
+	  element.innerHTML = scencesObj[id]["name"];
 
-	  var vrviewItem = document.querySelector('#vrview_hidden');
-	  vrviewItem.src=base_url+scencesObj[id]["vrImage"]["@link"];
+	  //var vrviewItem = document.querySelector('#vrview_hidden');
+	  //vrviewItem.src=base_url+scencesObj[id]["vrImage"]["@link"];
 	  //console.log(vrviewItem);
-	  var imgCanvas = document.createElement("canvas"),
-	  imgContext = imgCanvas.getContext("2d");
+	  //var imgCanvas = document.createElement("canvas"),
+	  //imgContext = imgCanvas.getContext("2d");
 
 	  // Make sure canvas is as big as the picture
-	  imgCanvas.width = 600;
-	  imgCanvas.height = 300;
+	  //imgCanvas.width = 600;
+	  //imgCanvas.height = 300;
 
 	  // Draw image into canvas element
-	  imgContext.drawImage(vrviewItem, 0, 0, vrviewItem.width, vrviewItem.height);
+	  //imgContext.drawImage(vrviewItem, 0, 0, vrviewItem.width, vrviewItem.height);
 
 	  // Get canvas contents as a data URL
-	  var imgAsDataURL = imgCanvas.toDataURL('image/jpeg', 1.0);
+	  //var imgAsDataURL = imgCanvas.toDataURL('image/jpeg', 1.0);
 
 	  // Save image into localStorage
-	  try {
+	  /*try {
 		  console.log("Save image into localStorage");
 		  localStorage.setItem(scencesObj[id]["vrImage"]["@link"], imgAsDataURL);
 	  }
 	  catch (e) {
 		  console.log("Storage failed: " + e);
-	  }
-  }
+	  }*/
+  //}
   /*else
   {	  
 	  console.log("vrView image - load from cache");
@@ -175,7 +192,7 @@ function loadScene(id) {
   //save vr image to localstorage-end	
   
   // Unhighlight carousel items
-  var carouselLinks = document.querySelectorAll('ul.carousel li a');
+  /*var carouselLinks = document.querySelectorAll('ul.carousel li a');
   for (var i = 0; i < carouselLinks.length; i++) {
     carouselLinks[i].classList.remove('current');
   }
@@ -229,7 +246,7 @@ function loadScene(id) {
   }
   catch(err) {
 	console.log("No hotspot for facility "+id);
-  }
+  }*/
 }
 
 /*function b64toBlob(b64Data, contentType, sliceSize) {
@@ -256,41 +273,55 @@ function loadScene(id) {
       return blob;
 }*/
 
+function loadSceneSubFacilities(id)
+{
+
+	$.getJSON(sub_facilities_url+"?@jcr:uuid="+id, function(data){
+		if(data)
+		{
+			console.log("sub facilities data exists from live");
+			localStorage.setItem(key, JSON.stringify(data.results));
+			displaySubFacilities(data.results,key);
+		}
+		else
+		{
+			console.log("sub facilities data does exists. Reading from cache.");
+			//donotsaveImage=true;
+			var retrievedSubFacilities = localStorage.getItem(key);
+			//console.log('retrievedFacilities: ', JSON.parse(retrievedFacilities));
+			displaySubFacilities(JSON.parse(retrievedSubFacilities),key);
+		}
+	})
+	.done(function() { })
+	.fail(function() { 
+		console.log("sub facilities data retrieve failed. Reading from cache.");
+		//donotsaveImage=true;
+		var retrievedSubFacilities = localStorage.getItem('retrievedFacilities');
+		//console.log('retrievedSubFacilities: ', JSON.parse(retrievedFacilities));
+		displaySubFacilities(JSON.parse(retrievedSubFacilities),key);
+	});
+}
+
 function displaySubFacilities(json,key)
 {
 	$.each(json, function (index, value) {
-		vrView.addHotspot(key, {
-			pitch: 30, // In degrees. Up is positive.
-			yaw: 20, // In degrees. To the right is positive.
-			radius: 0.05, // Radius of the circular target in meters.
-		    distance: 2 // Distance of target from camera in meters.
-		});
-		/*vrView.addHotspot(key, {
-		    pitch: value["pitch"], // In degrees. Up is positive.
-		    yaw: value["yaw"], // In degrees. To the right is positive.
-			radius: value["radius"], // Radius of the circular target in meters.
-			distance: value["distance"] // Distance of target from camera in meters.
-		});*/
-		//console.log("name="+value["name"]+" pitch="+value["pitch"]+" yaw="+value["yaw"]+" radius="+value["radius"]+" distance="+value["distance"]);
 		vrView.on('click', function(event) {
-			if (event.id == key) {
-				// Handle hotspot click.
-				vrView.setContent({
+			vrView.setContent({
 					image: base_url+value["vrImage"]["@link"],
 					preview: base_url+value["vrImage"]["@link"],
 					is_autopan_off: true
-				});
-			}
-
+			});
 		});
 	});	
 }
+
+
 
 function onVRViewReady(e) {
   console.log('onVRViewReady');
 
   // Create the carousel links
-  var carouselItems = document.querySelectorAll('ul.carousel li a');
+  /*var carouselItems = document.querySelectorAll('ul.carousel li a');
   for (var i = 0; i < carouselItems.length; i++) {
     var item = carouselItems[i];
     item.disabled = false;
@@ -300,7 +331,7 @@ function onVRViewReady(e) {
 	  console.log(event.target.parentNode.getAttribute('href').substring(1));
       loadScene(event.target.parentNode.getAttribute('href').substring(1));
     });
-  }
+  }*/
 }
 
 function onModeChange(e) {
@@ -326,7 +357,7 @@ function generateLvlBtn(){
   $("#level_buttons").append(buttons);
 }
 
-function generateSceneObjects(level){
+/*function generateSceneObjects(level){
 	console.log("generateSceneObjects");
 	$("#carousell_div").html("");
 	//generate-carousell-start
@@ -392,4 +423,4 @@ function cacheImage(imgItem){
 		}
 		imgItem.onload=null;
 	}
-}
+}*/
