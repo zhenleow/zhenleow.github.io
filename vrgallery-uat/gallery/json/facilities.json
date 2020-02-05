@@ -1,0 +1,73 @@
+{
+   "results":[
+      {
+         "@name":"13",
+         "@path":"/facilities/13",
+         "@id":"a46fcf3a-15c6-43e0-a1aa-0ef40cdfd0ff",
+         "@nodeType":"facility",
+         "jcr:createdBy":"admin",
+         "hotspots":[
+            "c406921a-cdd9-4880-91ba-dd4019f212c4",
+            "cb27d68d-4b90-4fc7-b612-8792a07f5edc"
+         ],
+         "vrThumbnail":{
+            "@name":"2019-0912-Post-surgery-Wound-Care-Thumbnail-1.jpg",
+            "@path":"/2019-0912-Post-surgery-Wound-Care-Thumbnail-1.jpg",
+            "@id":"jcr:3dab211e-d868-4eeb-9331-072b88883e75",
+            "@link":"/farrerpark-webapp/dam/jcr:3dab211e-d868-4eeb-9331-072b88883e75/2019-0912%20Post-surgery%20Wound%20Care%20Thumbnail-1.jpg",
+            "metadata":{
+               "fileName":"2019-0912 Post-surgery Wound Care Thumbnail-1.jpg",
+               "mimeType":"image/jpeg",
+               "fileSize":"149855",
+               "height":"300",
+               "width":"600",
+               "format":"image/jpeg",
+               "creator":[
+                  "superuser"
+               ],
+               "date":"2019-11-04T23:23:59.226+08:00",
+               "created":"2019-11-04T23:23:59.226+08:00",
+               "modified":"2019-11-04T23:23:59.226+08:00"
+            }
+         },
+         "name":"Cardiovascular Suite",
+         "mgnl:lastActivatedBy":"superuser",
+         "jcr:created":"2019-11-11T15:31:52.748+08:00",
+         "mgnl:lastActivated":"2019-10-22T11:43:54.312+08:00",
+         "writeup":"The Cardiovascular suite is equipped with the most current angiography equipment that can perform cardiovascular procedures and.",
+         "mgnl:created":"2019-10-22T11:43:54.312+08:00",
+         "mgnl:createdBy":"superuser",
+         "featureImage":"jcr:7491f78b-a569-49f5-a6ed-0bd98ad9500f",
+         "vrImage":{
+            "@name":"78c87240d397392cb2744bb5fa1dc2d9.jpg",
+            "@path":"/LandingPage/78c87240d397392cb2744bb5fa1dc2d9.jpg",
+            "@id":"jcr:d9b3a069-c04d-4a13-9e2f-f922762a4c87",
+            "@link":"/farrerpark-webapp/dam/jcr:d9b3a069-c04d-4a13-9e2f-f922762a4c87/78c87240d397392cb2744bb5fa1dc2d9.jpg",
+            "metadata":{
+               "fileName":"78c87240d397392cb2744bb5fa1dc2d9.jpg",
+               "mimeType":"image/jpeg",
+               "fileSize":"335843",
+               "height":"863",
+               "width":"1290",
+               "format":"image/jpeg",
+               "creator":[
+                  "superuser"
+               ],
+               "date":"2019-10-10T18:14:39.852+08:00",
+               "created":"2019-10-09T16:59:59.984+08:00",
+               "modified":"2019-10-10T18:14:39.852+08:00"
+            }
+         },
+         "snippet":"The Cardiovascular suite is equipped with the most current angiography equipment that can perform cardiovascular procedures and.",
+         "mgnl:lastModified":"2019-11-12T10:23:29.823+08:00",
+         "mgnl:activationStatus":"false",
+         "entityType":"FPH",
+         "facilityType":"940045d7-b63a-45b1-a4d0-78f1f4f9ee7b",
+         "floorLevel":"12",
+         "mgnl:lastModifiedBy":"superuser",
+         "@nodes":[
+
+         ]
+      }
+   ]
+}

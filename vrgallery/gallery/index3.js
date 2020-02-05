@@ -19,12 +19,9 @@ var firstSceneId;
 var donotsaveImage=false;
 
 var base_url = "https://thetfpc.com";
-//var base_url = "https://thetfpcjhgjghj.com";
 var facilities_url = "https://thetfpc.com/.rest/delivery/facilities" 
-//var facilities_url = "https://zhenleow.github.io/vrgallery/examples/gallery2/json/facilitiesv2.jsonn";
 
 var sub_facilities_url = "https://thetfpc.com/.rest/delivery/subfacilities" 
-//var sub_facilities_url = "https://zhenleow.github.io/vrgallery/examples/gallery2/json/subfacilitiesv2.jsonn";
 
 $(document).ready(function() {
 	var type = getUrlParam('type','');
@@ -39,31 +36,6 @@ $(document).ready(function() {
 	{
 		getFacilityJson(id);
 	}
-	
-	/*$.getJSON(facilities_url, function(data){
-		if(data)
-		{
-			console.log("facilities data exists from live");
-			localStorage.setItem('retrievedFacilities', JSON.stringify(data.results));
-			displayFacilities(data.results);
-		}
-		else
-		{
-			console.log("facilities data does exists. Reading from cache.");
-			donotsaveImage=true;
-			var retrievedFacilities = localStorage.getItem('retrievedFacilities');
-			//console.log('retrievedFacilities: ', JSON.parse(retrievedFacilities));
-			displayFacilities(JSON.parse(retrievedFacilities));
-		}
-	})
-	.done(function() { })
-	.fail(function() { 
-		console.log("facilities data retrieve failed. Reading from cache.");
-		donotsaveImage=true;
-		var retrievedFacilities = localStorage.getItem('retrievedFacilities');
-		//console.log('retrievedFacilities: ', JSON.parse(retrievedFacilities));
-		displayFacilities(JSON.parse(retrievedFacilities));
-	});*/
 });
 
 function getUrlVars() {
@@ -81,35 +53,6 @@ function getUrlParam(parameter, defaultvalue){
         }
     return urlparameter;
 }
-
-/*function displayFacilities(json){
-	console.log("displayFacilities");
-	$.each(json, function (index, value) {
-		scencesObj[value["@id"]] = value;
-		if ($.inArray(value.floorLevel, levels) < 0) {
-			levels.push(value.floorLevel);
-		}
-	});
-	
-	console.log(scencesObj);
-	
-	var type = getUrlParam('type','');
-	var id = getUrlParam('id','');
-	console.log("type="+type+",id="+id);
-	
-	if(type=='s')
-	{
-		getSubFacilityJson(id);
-	}
-	else
-	{
-		getFacilityJson(id);
-	}
-	
-
-	//generateLvlBtn();
-	//generateSceneObjects("1");	
-}*/
 
 function onLoad() {
   vrView = new VRView.Player('#vrview', {
@@ -144,26 +87,17 @@ function getSubFacilityJson(id)
 	$.getJSON(sub_facilities_url+"?@jcr:uuid="+id, function(data){
 		if(data)
 		{
-			console.log("sub facilities data exists from live");
-			localStorage.setItem(id, JSON.stringify(data.results));
+			console.log("sub facilities data exists from live.");
 			displayVRImage(data.results);
 		}
 		else
 		{
-			console.log("sub facilities data does exists. Reading from cache.");
-			//donotsaveImage=true;
-			var retrievedSubFacilities = localStorage.getItem(id);
-			//console.log('retrievedFacilities: ', JSON.parse(retrievedFacilities));
-			displayVRImage(JSON.parse(retrievedSubFacilities));
+			console.log("sub facilities data does exists from live.");
 		}
 	})
 	.done(function() { })
 	.fail(function() { 
-		console.log("sub facilities data retrieve failed. Reading from cache.");
-		//donotsaveImage=true;
-		var retrievedSubFacilities = localStorage.getItem('retrievedFacilities');
-		//console.log('retrievedSubFacilities: ', JSON.parse(retrievedFacilities));
-		displayVRImage(JSON.parse(retrievedSubFacilities));
+		console.log("sub facilities data retrieve failed.");
 	});
 }
 
@@ -172,26 +106,18 @@ function getFacilityJson(id)
 	$.getJSON(facilities_url+"?@jcr:uuid="+id, function(data){
 		if(data)
 		{
-			console.log("facility data exists from live");
-			localStorage.setItem(id, JSON.stringify(data.results));
+			console.log("facility data exists from live.");
+			//localStorage.setItem(id, JSON.stringify(data.results));
 			displayVRImage(data.results);
 		}
 		else
 		{
-			console.log("facility data does exists. Reading from cache.");
-			//donotsaveImage=true;
-			var retrievedSubFacilities = localStorage.getItem(id);
-			//console.log('retrievedFacilities: ', JSON.parse(retrievedFacilities));
-			displayVRImage(JSON.parse(retrievedSubFacilities));
+			console.log("facility data does not exists from live.");
 		}
 	})
 	.done(function() { })
 	.fail(function() { 
-		console.log("facility data  data retrieve failed. Reading from cache.");
-		//donotsaveImage=true;
-		var retrievedSubFacilities = localStorage.getItem('retrievedFacilities');
-		//console.log('retrievedSubFacilities: ', JSON.parse(retrievedFacilities));
-		displayVRImage(JSON.parse(retrievedSubFacilities));
+		console.log("facility data  data retrieve failed.");
 	});
 }
 
