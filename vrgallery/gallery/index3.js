@@ -27,7 +27,20 @@ var sub_facilities_url = "https://thetfpc.com/.rest/delivery/subfacilities"
 //var sub_facilities_url = "https://zhenleow.github.io/vrgallery/examples/gallery2/json/subfacilitiesv2.jsonn";
 
 $(document).ready(function() {
-	$.getJSON(facilities_url, function(data){
+	var type = getUrlParam('type','');
+	var id = getUrlParam('id','');
+	console.log("type="+type+",id="+id);
+	
+	if(type=='s')
+	{
+		getSubFacilityJson(id);
+	}
+	else
+	{
+		getFacilityJson(id);
+	}
+	
+	/*$.getJSON(facilities_url, function(data){
 		if(data)
 		{
 			console.log("facilities data exists from live");
@@ -50,7 +63,7 @@ $(document).ready(function() {
 		var retrievedFacilities = localStorage.getItem('retrievedFacilities');
 		//console.log('retrievedFacilities: ', JSON.parse(retrievedFacilities));
 		displayFacilities(JSON.parse(retrievedFacilities));
-	});
+	});*/
 });
 
 function getUrlVars() {
@@ -69,7 +82,7 @@ function getUrlParam(parameter, defaultvalue){
     return urlparameter;
 }
 
-function displayFacilities(json){
+/*function displayFacilities(json){
 	console.log("displayFacilities");
 	$.each(json, function (index, value) {
 		scencesObj[value["@id"]] = value;
@@ -86,17 +99,17 @@ function displayFacilities(json){
 	
 	if(type=='s')
 	{
-		loadSceneSubFacilities(id);
+		getSubFacilityJson(id);
 	}
 	else
 	{
-		loadScene(id);
+		getFacilityJson(id);
 	}
 	
 
 	//generateLvlBtn();
 	//generateSceneObjects("1");	
-}
+}*/
 
 function onLoad() {
   vrView = new VRView.Player('#vrview', {
@@ -126,23 +139,22 @@ function loadScene(id) {
   element.innerHTML = scencesObj[id]["name"];
 }
 
-function loadSceneSubFacilities(id)
+function getSubFacilityJson(id)
 {
-
 	$.getJSON(sub_facilities_url+"?@jcr:uuid="+id, function(data){
 		if(data)
 		{
 			console.log("sub facilities data exists from live");
-			localStorage.setItem(key, JSON.stringify(data.results));
-			displaySubFacilities(data.results,key);
+			localStorage.setItem(id, JSON.stringify(data.results));
+			displayVRImage(data.results);
 		}
 		else
 		{
 			console.log("sub facilities data does exists. Reading from cache.");
 			//donotsaveImage=true;
-			var retrievedSubFacilities = localStorage.getItem(key);
+			var retrievedSubFacilities = localStorage.getItem(id);
 			//console.log('retrievedFacilities: ', JSON.parse(retrievedFacilities));
-			displaySubFacilities(JSON.parse(retrievedSubFacilities),key);
+			displayVRImage(JSON.parse(retrievedSubFacilities));
 		}
 	})
 	.done(function() { })
@@ -151,20 +163,49 @@ function loadSceneSubFacilities(id)
 		//donotsaveImage=true;
 		var retrievedSubFacilities = localStorage.getItem('retrievedFacilities');
 		//console.log('retrievedSubFacilities: ', JSON.parse(retrievedFacilities));
-		displaySubFacilities(JSON.parse(retrievedSubFacilities),key);
+		displayVRImage(JSON.parse(retrievedSubFacilities));
 	});
 }
 
-function displaySubFacilities(json,key)
+function getFacilityJson(id)
+{
+	$.getJSON(facilities_url+"?@jcr:uuid="+id, function(data){
+		if(data)
+		{
+			console.log("facility data exists from live");
+			localStorage.setItem(id, JSON.stringify(data.results));
+			displayVRImage(data.results);
+		}
+		else
+		{
+			console.log("facility data does exists. Reading from cache.");
+			//donotsaveImage=true;
+			var retrievedSubFacilities = localStorage.getItem(id);
+			//console.log('retrievedFacilities: ', JSON.parse(retrievedFacilities));
+			displayVRImage(JSON.parse(retrievedSubFacilities));
+		}
+	})
+	.done(function() { })
+	.fail(function() { 
+		console.log("facility data  data retrieve failed. Reading from cache.");
+		//donotsaveImage=true;
+		var retrievedSubFacilities = localStorage.getItem('retrievedFacilities');
+		//console.log('retrievedSubFacilities: ', JSON.parse(retrievedFacilities));
+		displayVRImage(JSON.parse(retrievedSubFacilities));
+	});
+}
+
+function displayVRImage(json)
 {
 	$.each(json, function (index, value) {
-		vrView.on('click', function(event) {
+			console.log(base_url+value["vrImage"]["@link"]);
+			 var element = document.getElementById("title");
+			element.innerHTML = value["name"];
 			vrView.setContent({
 					image: base_url+value["vrImage"]["@link"],
 					preview: base_url+value["vrImage"]["@link"],
 					is_autopan_off: true
 			});
-		});
 	});	
 }
 
