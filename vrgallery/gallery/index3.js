@@ -20,7 +20,6 @@ var donotsaveImage=false;
 
 var base_url = "https://thetfpc.com";
 var facilities_url = "https://thetfpc.com/.rest/delivery/facilities" 
-
 var sub_facilities_url = "https://thetfpc.com/.rest/delivery/subfacilities" 
 
 $(document).ready(function() {
